@@ -3,7 +3,6 @@
  */
 package Socket;
 
-import Socket.Client;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -19,37 +18,45 @@ public class ClientView {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        Client cliente = new Client();
-        
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+       Client cliente = new Client();
+       
+       ObjectInputStream input;
+       ObjectOutputStream output;
+       
+       
         try {
-            cliente.criarCliente("localhost", 5022);
-        } catch (IOException ex) {
-            Logger.getLogger(ClientView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        try {
-            ObjectOutputStream output = cliente.conexaoOutput();
-            output.writeUTF("Olá, servidor!");
-            System.out.println("Mensagem foi enviada ao servidor.");
-            String msnServidor = cliente.conexaoInput().readUTF();
-            System.out.println("Passou do msnServidor");
-            System.out.println("Mensagem do CLIENTE: " + msnServidor);
-            System.out.println("Passou do print msnServidor");
+            cliente.iniciarConexao("localhost", 5020);
+            output = cliente.conexaoOutput(cliente.getCliente());
+            input = cliente.conexaoInput(cliente.getCliente());
+            
+            System.out.println("Recebendo dados!");
+            Object dados;
+            
+            
+                dados = input.readObject();
+                System.out.println(dados.toString());
+            
+            
+            /*System.out.println("Enviando mensagem...");
+            String msn = "HELLO";
+            output.writeUTF(msn);
+            output.flush();
+            
+            System.out.println("Mensagem " + msn + " enviada.");
+            
+            msn = input.readUTF();
+            System.out.println("Resposta: " + msn);*/
+            
+            
             
         } catch (IOException ex) {
             Logger.getLogger(ClientView.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            cliente.conexaoClose();
+            cliente.fecharSocket(cliente.getCliente());
         }
-        
-        try {
-            cliente.getInput().close();
-            cliente.getOutput().close();
-            cliente.getCliente().close();
-        } catch (IOException ex) {
-            Logger.getLogger(ClientView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-            
-        
+       
     }
     
 }

@@ -14,29 +14,38 @@ import java.net.Socket;
  * @author Adlla Katarine
  */
 public class Server {
-    
+
     private ServerSocket servidor;
-    private Socket cliente;
+    private ObjectOutputStream output;
+    private ObjectInputStream input;
     
-    /**
-     * Método cria um servidor
-     * @param porta
-     * @throws java.io.IOException
-     */
     public void criarServidor(int porta) throws IOException{
-        this.servidor = new ServerSocket(porta);
+        servidor = new ServerSocket(porta);
     }
     
-    /**
-     * Método que aguarda uma conexão com um cliente e aceita.
-     * @return cliente
-     * @throws java.io.IOException
-     */
-    public Socket aguardarConexao() throws IOException{
-        cliente = servidor.accept();
+    public Socket esperarConexao() throws IOException{
+        Socket cliente = servidor.accept();
         return cliente;
     }
     
+    public ObjectOutputStream conexaoOutput(Socket cliente) throws IOException{
+        this.output = new ObjectOutputStream(cliente.getOutputStream());
+        return output;
+    }
+    
+    public ObjectInputStream conexaoInput(Socket cliente) throws IOException{
+        this.input = new ObjectInputStream(cliente.getInputStream());
+        return input;
+    }
+    
+    public void conexaoClose() throws IOException{
+        output.close();
+        input.close();
+    }
+    
+    public void fecharSocket(Socket cliente) throws IOException{
+        cliente.close();
+    }
 
     public ServerSocket getServidor() {
         return servidor;
@@ -46,12 +55,21 @@ public class Server {
         this.servidor = servidor;
     }
 
-    public Socket getCliente() {
-        return cliente;
+    public ObjectOutputStream getOutput() {
+        return output;
     }
 
-    public void setCliente(Socket cliente) {
-        this.cliente = cliente;
+    public void setOutput(ObjectOutputStream output) {
+        this.output = output;
     }
 
+    public ObjectInputStream getInput() {
+        return input;
+    }
+
+    public void setInput(ObjectInputStream input) {
+        this.input = input;
+    }
+    
+    
 }
