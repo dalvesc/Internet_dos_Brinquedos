@@ -1,6 +1,4 @@
-/*
- * Descrição da classe.
- */
+
 package Socket;
 
 import java.io.IOException;
@@ -69,7 +67,5 @@ public class Server {
 
     public void setInput(ObjectInputStream input) {
         this.input = input;
-    }
-    
-    
+    } 
 }

@@ -51,14 +51,11 @@ public class ServerView {
             System.out.println("Tratando mensagem...");
             String msn = input.readUTF();
             System.out.println("Mensagem recebida...");
-            output.writeUTF("HELLO WORLD!");*/
-            
-            
+            output.writeUTF("HELLO WORLD!");*/  
         } catch (IOException ex) {
             Logger.getLogger(ServerView.class.getName()).log(Level.SEVERE, null, ex);
         } finally{
             servidor.fecharSocket(cliente);
         }
-    }
-    
+    } 
 }

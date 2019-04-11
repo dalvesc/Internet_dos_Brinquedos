@@ -37,7 +37,6 @@ public class ClientView {
                 dados = input.readObject();
                 System.out.println(dados.toString());
             
-            
             /*System.out.println("Enviando mensagem...");
             String msn = "HELLO";
             output.writeUTF(msn);
@@ -47,9 +46,7 @@ public class ClientView {
             
             msn = input.readUTF();
             System.out.println("Resposta: " + msn);*/
-            
-            
-            
+
         } catch (IOException ex) {
             Logger.getLogger(ClientView.class.getName()).log(Level.SEVERE, null, ex);
         } finally{
