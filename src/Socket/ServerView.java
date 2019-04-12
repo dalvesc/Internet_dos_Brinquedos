@@ -36,18 +36,19 @@ public class ServerView {
             cliente = servidor.esperarConexao();
             output = servidor.conexaoOutput(cliente);
             input = servidor.conexaoInput(cliente);
-            Iterator it = dadosSensor.getLeituraDados().iterator();
+            
             SimulacaoSensor d;
             //Percorre toda a lista
             System.out.println("Enviando todos os dados coletados!");
-            while(it.hasNext()) {
-                d = (SimulacaoSensor)it.next();
-                System.out.println(d.toString());
-                output.writeObject(d);
-                output.flush();
-            }
-            System.out.println("Concluído o envio de dados!");
-            
+            while(true){
+                Iterator it = dadosSensor.getLeituraDados().iterator();
+                while(it.hasNext()) {
+                    d = (SimulacaoSensor)it.next();
+                    System.out.println(d.toString());
+                    output.writeObject(d);
+                    output.flush();
+                }
+           }
             /*
             System.out.println("Tratando mensagem...");
             String msn = input.readUTF();
