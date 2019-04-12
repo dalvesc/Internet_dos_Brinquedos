@@ -47,6 +47,7 @@ public class ServerView {
                 output.flush();
             }
             System.out.println("Concluído o envio de dados!");
+            
             /*
             System.out.println("Tratando mensagem...");
             String msn = input.readUTF();

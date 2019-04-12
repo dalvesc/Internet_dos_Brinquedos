@@ -53,7 +53,6 @@ public class ClientView {
             cliente.conexaoClose();
             cliente.fecharSocket(cliente.getCliente());
         }
-       
     }
     
 }

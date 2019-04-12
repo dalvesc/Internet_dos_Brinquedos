@@ -79,5 +79,4 @@ public class SimulacaoSensor implements Serializable{
     public String toString() {
         return "SimulacaoSensor{" + "ECP=" + ECP + ", RSSI=" + RSSI + ", antennaID=" + antennaID + ", frequency=" + frequency + ", timeStamp=" + timeStamp + ", phase=" + phase + '}';
     }
-    
 }
