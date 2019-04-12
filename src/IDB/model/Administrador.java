@@ -6,9 +6,11 @@
 package IDB.model;
 
 /**
- *
- * @author danco
+ * @author Daniel Costa
+ * @author Adlla Katarine
  */
 public class Administrador {
-    
+    private String user;
+    private String senha;
+    private Corrida corrida;
 }

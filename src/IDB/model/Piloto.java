@@ -8,10 +8,12 @@ package IDB.model;
 import java.util.LinkedList;
 
 /**
- *
- * @author danco
+ * @author Daniel Costa
+ * @author Adlla Katarine
  */
 public class Piloto {
+    private String user;
+    private String senha;
     private String urlImagem;
     private String nome;
     private Carro carro;

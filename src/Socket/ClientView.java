@@ -3,6 +3,7 @@
  */
 package Socket;
 
+import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -18,24 +19,30 @@ public class ClientView {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
+    public static void main(String[] args) throws IOException, ClassNotFoundException{
        Client cliente = new Client();
        
        ObjectInputStream input;
        ObjectOutputStream output;
-       
+       Object dados = "n";
        
         try {
             cliente.iniciarConexao("localhost", 5020);
             output = cliente.conexaoOutput(cliente.getCliente());
             input = cliente.conexaoInput(cliente.getCliente());
-            
+            output.flush();
             System.out.println("Recebendo dados!");
-            Object dados;
             
+            while(true){
+                try {
+                    dados = input.readObject();
+                    System.out.println(dados.toString());
+                }
+                catch (EOFException exc) {
+                    break;
+                }
+            }
             
-                dados = input.readObject();
-                System.out.println(dados.toString());
             
             /*System.out.println("Enviando mensagem...");
             String msn = "HELLO";

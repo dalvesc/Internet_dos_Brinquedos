@@ -5,8 +5,8 @@
  */
 package IDB.model;
 /**
- *
- * @author danco
+ * @author Daniel Costa
+ * @author Adlla Katarine
  */
 public class Carro {
     
