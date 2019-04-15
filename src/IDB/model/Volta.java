@@ -1,18 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package IDB.model;
 
-/**
- *
- * @author danco
- */
 public class Volta {
     private int numeroVolta;
-    private float tempo; //tempo só terá na corrida de qualificação
-    private int pits; //isso será de um piloto | cada piloto tem sua quantidade de pits que utilizou
+    private float tempo;
+    private int pits;
 
     public Volta(int numeroVolta, float tempo) {
         this.numeroVolta = numeroVolta;
