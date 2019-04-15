@@ -9,7 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
-public class Inicio_Controller implements Initializable {
+public class Inicio_ControllerFX implements Initializable {
     
     @FXML
     private Label titulo;
