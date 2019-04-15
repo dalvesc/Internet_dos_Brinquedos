@@ -12,14 +12,21 @@ import java.util.LinkedList;
  * @author Daniel Costa
  * @author Adlla Katarine
  */
-
 public class ControllerCadastro {
-    LinkedList <Piloto> piloto;
-    LinkedList <Administrador> adm;
+    private LinkedList <Piloto> piloto;
+    private LinkedList <Administrador> adm;
     
     public ControllerCadastro(){
         piloto = new LinkedList();
         adm = new LinkedList();
+    }
+
+    public LinkedList<Piloto> getPiloto() {
+        return piloto;
+    }
+
+    public LinkedList<Administrador> getAdm() {
+        return adm;
     }
     
     /**
