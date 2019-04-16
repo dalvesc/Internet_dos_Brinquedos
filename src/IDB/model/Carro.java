@@ -1,17 +1,23 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package IDB.model;
 
+/**
+ * @author Daniel Costa
+ * @author Adlla Katarine
+ */
 public class Carro {
     
     private String cor;
     private String numero; 
     private String equipe;
-    private boolean disponivel;
 
     public Carro(String cor, String equipe) {
         this.cor = cor;
-        this.numero = numero;
         this.equipe = equipe;
-        this.disponivel = disponivel;
     }
 
     public String getCor() {
@@ -37,14 +43,4 @@ public class Carro {
     public void setEquipe(String equipe) {
         this.equipe = equipe;
     }
-
-    public boolean isDisponivel() {
-        return disponivel;
-    }
-
-    public void setDisponivel(boolean disponivel) {
-        this.disponivel = disponivel;
-    }
- 
-    
 }

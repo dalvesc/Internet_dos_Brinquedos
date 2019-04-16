@@ -1,5 +1,5 @@
 /*
- * Está classe fará início ao cadastro/login do ADM ou Piloto.
+ * Está classe dará início ao cadastro/login do ADM ou Piloto.
  */
 package IDB.controller;
 
@@ -67,7 +67,7 @@ public class ControllerCadastro {
      * @param usuario
      * @param user
      * @param classe
-     * @return 
+     * @return boolean
      */
     public boolean verificaUsuarioExistente(LinkedList usuario, String user, String classe){
         Iterator iterator = usuario.iterator();
