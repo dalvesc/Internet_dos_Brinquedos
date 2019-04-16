@@ -1,14 +1,43 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *
  */
 package IDB.controller;
 
+import IDB.model.Piloto;
+import java.util.Iterator;
+
 /**
- *
- * @author danco
+ * @author Daniel Costa
+ * @author Adlla Katarine
  */
 public class ControllerAdministrador {
+    private ControllerCadastro pitolosCadastrados;
+    private ControllerCorrida corrida;
+
+    public ControllerCadastro getPitolosCadastrados() {
+        return pitolosCadastrados;
+    }
+
+    public ControllerCorrida getCorrida() {
+        return corrida;
+    }
     
+    /**
+     * Método que retorna o iterator de todos os pilotos cadastrados.
+     * @return Iterator
+     */
+    public Iterator listarPilotos(){
+        Iterator iterator = pitolosCadastrados.getPiloto().iterator();
+        
+        return iterator;
+    }
+    
+    /**
+     * Método que recebe como parâmetro um piloto escolhido pelo ADM para jogar na partida atual.
+     * @param piloto 
+     * @return boolean
+     */
+    public boolean escolherPiloto(Piloto piloto){
+        return corrida.pilotoEscolhido(piloto);
+    }
 }

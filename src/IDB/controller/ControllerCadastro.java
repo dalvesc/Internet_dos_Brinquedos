@@ -12,14 +12,21 @@ import java.util.LinkedList;
  * @author Daniel Costa
  * @author Adlla Katarine
  */
-
 public class ControllerCadastro {
-    LinkedList <Piloto> piloto;
-    LinkedList <Administrador> adm;
+    private LinkedList <Piloto> piloto;
+    private LinkedList <Administrador> adm;
     
     public ControllerCadastro(){
         piloto = new LinkedList();
         adm = new LinkedList();
+    }
+
+    public LinkedList<Piloto> getPiloto() {
+        return piloto;
+    }
+
+    public LinkedList<Administrador> getAdm() {
+        return adm;
     }
     
     /**
@@ -60,7 +67,7 @@ public class ControllerCadastro {
      * @param usuario
      * @param user
      * @param classe
-     * @return 
+     * @return boolean
      */
     public boolean verificaUsuarioExistente(LinkedList usuario, String user, String classe){
         Iterator iterator = usuario.iterator();
