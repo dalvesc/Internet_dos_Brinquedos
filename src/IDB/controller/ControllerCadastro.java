@@ -1,5 +1,5 @@
 /*
- * Está classe fará início ao cadastro/login do ADM ou Piloto.
+ * Está classe dará início ao cadastro/login do ADM ou Piloto.
  */
 package IDB.controller;
 

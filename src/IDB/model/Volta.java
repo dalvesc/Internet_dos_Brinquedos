@@ -11,11 +11,10 @@ package IDB.model;
  */
 public class Volta {
     private int numeroVolta;
-    private float tempo; //tempo só terá na corrida de qualificação
+    private float tempo; //tempo de volta só terá na corrida de qualificação
     private int pits; //isso será de um piloto | cada piloto tem sua quantidade de pits que utilizou
 
-    public Volta(int numeroVolta, float tempo) {
-        this.numeroVolta = numeroVolta;
+    public Volta(float tempo) {
         this.tempo = tempo;
         this.pits = 0;
     }
@@ -34,6 +33,14 @@ public class Volta {
 
     public void setTempo(float tempo) {
         this.tempo = tempo;
+    }
+
+    public int getPits() {
+        return pits;
+    }
+
+    public void setPits(int pits) {
+        this.pits = pits;
     }
     
     public void pitStop(){

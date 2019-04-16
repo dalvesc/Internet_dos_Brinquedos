@@ -28,6 +28,7 @@ public class Piloto {
      * @param volta 
      */
     public void novaVolta(Volta volta) {
+        volta.setNumeroVolta(voltas.size() + 1);
         voltas.add(volta);
     }
 
@@ -52,7 +53,7 @@ public class Piloto {
      * @return float
      */
     public float getVoltaRapida() {
-        Volta rapida = new Volta(0, 0), aux;
+        Volta rapida = new Volta(0), aux;
         Iterator itr = voltas.iterator();
         while (itr.hasNext()) {
             aux = (Volta) itr.next();

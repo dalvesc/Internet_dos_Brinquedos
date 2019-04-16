@@ -1,5 +1,5 @@
 /*
- *
+ * Está classe fará configurações da corrida atual.
  */
 package IDB.controller;
 
@@ -20,6 +20,13 @@ public class ControllerAdministrador {
 
     public ControllerCorrida getCorrida() {
         return corrida;
+    }
+    
+    /**
+     * Método para dar inicio as configurações da corrida.
+     */
+    public void iniciarConfCorrida(){
+        corrida = new ControllerCorrida();
     }
     
     /**
