@@ -6,6 +6,8 @@ package IDB.controller;
 import IDB.model.Carro;
 import IDB.model.Piloto;
 import IDB.model.Volta;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -75,6 +77,7 @@ public class ControllerCorrida {
     public boolean escolherEquipe(Piloto piloto, Carro carro){
         if(carros.contains(carro)){
             piloto.setCarro(carro);
+            piloto.setEquipe(carro.getEquipe());
             carros.remove(carro);
             return true;
         } return false;
@@ -94,7 +97,7 @@ public class ControllerCorrida {
                 Volta volta = new Volta(tempoVolta);
                 piloto.novaVolta(volta);
             }
-        }
+        } posicaoSessaoCorrida();
     }
     
     /**
@@ -113,11 +116,54 @@ public class ControllerCorrida {
     }
     
     /**
-     * Método que retorna o tempo da volta mais rapida do piloto desejado.
+     * Método que retorna o tempo da volta mais rápida do piloto desejado.
      * @param piloto
      * @return float
      */
     public float retornarVoltaMaisRapida(Piloto piloto){
         return piloto.getVoltaRapida();
+    }
+    
+    /**
+     * Método que atualiza a posição dos pilotos durante a corrida.
+     * @return LinkedList
+     */
+    public LinkedList posicaoSessaoCorrida(){
+        Collections.sort(pilotos, Collections.reverseOrder());
+        return pilotos;
+    }
+    
+    /**
+     * Método que atualiza a posição dos pilotos ao final da corrida.
+     * @return LinkedList
+     */
+    public LinkedList posicaoSessaoQualif(){
+        ArrayList pilotosAux = new ArrayList(pilotos.size());
+        
+        for(int i= pilotosAux.size()-1; i > 0;i--){
+            
+            for(int j=0; j < i; j++){
+                Piloto piloto1 = (Piloto)pilotosAux.get(j+1);
+                Piloto piloto2 = (Piloto)pilotosAux.get(j);
+                if(piloto1.getVoltaRapida() < piloto2.getVoltaRapida()){
+                    swap(pilotosAux, j, j+1);
+                }
+            }
+        }
+        for(int k = pilotosAux.size() - 1; k >= 0; k--){
+            pilotos.add((Piloto) pilotosAux.get(k));
+        } return pilotos;
+    }
+    
+    /**
+     * Método auxiliar na ordenação da posição dos pilotos na sessão de qualificação.
+     * @param pilotosAux
+     * @param i
+     * @param j 
+     */
+    private void swap(ArrayList pilotosAux, int i, int j){
+            Piloto piloto = (Piloto) pilotosAux.get(i);
+            pilotosAux.set(i, pilotosAux.get(j));
+            pilotosAux.set(j, pilotos);
     }
 }
