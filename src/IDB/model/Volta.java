@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Classe que contém o número da volta, o tempo total dessa volta em uma corrida e quantos PITS o piloto usou
+ * durante essa volta.
  */
 package IDB.model;
 
@@ -14,6 +13,10 @@ public class Volta {
     private float tempo; //tempo de volta só terá na corrida de qualificação
     private int pits; //isso será de um piloto | cada piloto tem sua quantidade de pits que utilizou
 
+    public Volta(){
+        
+    }
+    
     public Volta(float tempo) {
         this.tempo = tempo;
         this.pits = 0;

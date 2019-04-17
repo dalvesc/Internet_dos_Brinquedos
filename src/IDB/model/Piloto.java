@@ -7,7 +7,7 @@ import java.util.LinkedList;
  * @author Daniel Costa
  * @author Adlla Katarine
  */
-public class Piloto {
+public class Piloto implements Comparable{
     private String urlImagem;
     private String nome;
     private Carro carro;
@@ -15,6 +15,7 @@ public class Piloto {
     private String usuario;
     private String senha;
     private LinkedList<Volta> voltas;
+    private float tempoCorrida;
     
     public Piloto(String nome, String usuario, String senha, String urlImagem) {
         this.nome = nome;
@@ -32,6 +33,12 @@ public class Piloto {
         voltas.add(volta);
     }
 
+    /**
+     * Método que inicia a lista de voltas para cada nova partida.
+     */
+    public void iniciarVoltas(){
+        voltas = new LinkedList();
+    }
     /**
      * Método que retorna o numero de voltas que o piloto correu.
      * @return int
@@ -121,4 +128,35 @@ public class Piloto {
     public String getSenha() {
         return senha;
     }
+
+    public LinkedList<Volta> getVoltas() {
+        return voltas;
+    }
+
+    public void setVoltas(LinkedList<Volta> voltas) {
+        this.voltas = voltas;
+    }
+
+    public float getTempoCorrida() {
+        return tempoCorrida;
+    }
+
+    /**
+     * Método que atualiza o tempo da corrida.
+     */
+    public void setTempoCorrida() {
+        this.tempoCorrida = tempoCorrida + getTempoVolta();
+    }
+    
+    @Override
+    public int compareTo(Object pilotoAux) {
+        Piloto piloto = (Piloto)pilotoAux;
+        if (this.getNumVoltas() < piloto.getNumVoltas()) {
+            return -1;
+        }
+        if (this.getNumVoltas() > piloto.getNumVoltas()) {
+            return 1;
+        }
+        return 0;
+    } 
 }
