@@ -23,9 +23,6 @@ public class ConfPartida_ControllerFX implements Initializable {
     @FXML
     private Button iniciar;
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

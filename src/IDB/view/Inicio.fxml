@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="337.0" prefWidth="524.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IDB.controller.Inicio_Controller">
+<AnchorPane id="AnchorPane" prefHeight="337.0" prefWidth="524.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IDB.controller.Inicio_ControllerFX">
     <children>
-      <Label fx:id="titulo" layoutX="153.0" layoutY="14.0" prefHeight="51.0" prefWidth="217.0" text="Internet dos Brinquedos" textFill="#0046cc">
+      <Label layoutX="153.0" layoutY="14.0" prefHeight="51.0" prefWidth="217.0" text="Internet dos Brinquedos" textFill="#0046cc">
          <font>
             <Font name="Nirmala UI" size="20.0" />
          </font>
@@ -19,7 +19,7 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Label fx:id="label_qualificacao" layoutX="14.0" layoutY="69.0" prefHeight="25.0" prefWidth="170.0" text="SESSÃO DE QUALIFICAÇÃO:">
+      <Label fx:id="label_tipo_corrida" layoutX="14.0" layoutY="69.0" prefHeight="25.0" prefWidth="170.0">
          <font>
             <Font name="Nirmala UI" size="13.0" />
          </font>
@@ -29,7 +29,7 @@
             <Font name="Nirmala UI" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="label_recorde" layoutX="274.0" layoutY="69.0" prefHeight="25.0" prefWidth="144.0" text="RECORDE DO CIRCUITO:">
+      <Label layoutX="274.0" layoutY="69.0" prefHeight="25.0" prefWidth="144.0" text="RECORDE DO CIRCUITO:">
          <font>
             <Font name="Nirmala UI" size="13.0" />
          </font>
@@ -49,7 +49,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Label fx:id="label_qualificacao1" layoutX="113.0" layoutY="119.0" prefHeight="25.0" prefWidth="297.0" text="POS | PILOTO | TIME |  TEMPO DE VOLTA | VOLTAS">
+      <Label layoutX="113.0" layoutY="119.0" prefHeight="25.0" prefWidth="297.0" text="POS | PILOTO | TIME |  TEMPO DE VOLTA | VOLTAS">
          <font>
             <Font name="Nirmala UI" size="13.0" />
          </font>

@@ -1,11 +1,15 @@
 package IDB.view;
 
-import IDB.facade.*;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import IDB.exception.*;
+import IDB.facade.*;
 
 public class Internet_dos_Brinquedos extends Application {
 
@@ -29,7 +33,15 @@ public class Internet_dos_Brinquedos extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        facade = new FacadeBackEnd();
+        try {
+            facade = new FacadeBackEnd();
+        } catch (IOException ex) {
+            Logger.getLogger(Internet_dos_Brinquedos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (CadastroInvalido ex) {
+            Logger.getLogger(Internet_dos_Brinquedos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (LoginInvalido ex) {
+            Logger.getLogger(Internet_dos_Brinquedos.class.getName()).log(Level.SEVERE, null, ex);
+        }
         launch(args);
     }
 }
