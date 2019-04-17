@@ -9,7 +9,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="337.0" prefWidth="524.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IDB.controller.Login_ControllerFX">
     <children>
-      <Label fx:id="titulo" layoutX="100.0" layoutY="14.0" prefHeight="53.0" prefWidth="389.0" text="Internet dos Brinquedos" textFill="#0046cc">
+      <Label layoutX="100.0" layoutY="14.0" prefHeight="53.0" prefWidth="389.0" text="Internet dos Brinquedos" textFill="#0046cc">
          <font>
             <Font name="Nirmala UI" size="36.0" />
          </font>
@@ -30,5 +30,10 @@
       </Label>
       <TextField fx:id="usuario" layoutX="188.0" layoutY="143.0" promptText="Usuário" />
       <TextField fx:id="senha" layoutX="187.0" layoutY="205.0" promptText="Senha" />
+      <Label fx:id="loginInvalido" layoutX="68.0" layoutY="267.0" prefHeight="35.0" prefWidth="169.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

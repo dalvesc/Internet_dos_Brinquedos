@@ -11,8 +11,6 @@ import javafx.scene.control.TextField;
 public class Login_ControllerFX implements Initializable {
 
     @FXML
-    private Label titulo;
-    @FXML
     private Button voltar;
     @FXML
     private Button entrar;
@@ -20,6 +18,8 @@ public class Login_ControllerFX implements Initializable {
     private TextField usuario;
     @FXML
     private TextField senha;
+    @FXML
+    private Label loginInvalido;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
