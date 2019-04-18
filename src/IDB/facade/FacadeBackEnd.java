@@ -33,6 +33,18 @@ public class FacadeBackEnd {
         return crlcad.login(user, senha, classe);
     }
 
+    public boolean verificaUsuarioCadastrado(String user) {
+        return crlcad.verificaUsuarioCadastrado(user);
+    }
+
+    public Piloto getPilotoLogado() {
+        return crlcad.getPilotoLogado();
+    }
+
+    public Piloto getPil() {
+        return crlcad.getPil();
+    }
+
     public Iterator listarEquipes() {
         return crlcor.listarEquipes();
     }
@@ -45,7 +57,19 @@ public class FacadeBackEnd {
         return crlcor.escolherEquipe(piloto, carro);
     }
 
-    public Piloto getPilotoLogado() {
-        return crlcad.getPilotoLogado();
+    public boolean pilotoEscolhido(Piloto piloto) throws CorridaCheia {
+        return crlcor.pilotoEscolhido(piloto);
+    }
+
+    public void escolherConfClassif(float tempo, int voltas) {
+        crlcor.escolherConfClassif(tempo, voltas);
+    }
+
+    public void escolherConfCorrida(int voltas) {
+        crlcor.escolherConfCorrida(voltas);
+    }
+
+    public boolean pilotoCheio() {
+        return crlcor.pilotoCheio();
     }
 }

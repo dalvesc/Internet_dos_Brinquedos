@@ -31,7 +31,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="iniciar1" layoutX="80.0" layoutY="307.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="92.0" text="Selecionar">
+      <Button fx:id="selecionar" layoutX="80.0" layoutY="307.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="92.0" text="Selecionar">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -39,5 +39,10 @@
       <TextField fx:id="tempo_qualificacao" layoutX="310.0" layoutY="119.0" promptText="Tempo de Qualificação" />
       <TextField fx:id="voltas_qualificacao" layoutX="310.0" layoutY="164.0" promptText="Voltas de Qualificação" />
       <TextField fx:id="voltas_corrida" layoutX="310.0" layoutY="211.0" promptText="Voltas da Corrida" />
+      <Label fx:id="corrida_cheia" layoutX="188.0" layoutY="307.0" prefHeight="25.0" prefWidth="92.0">
+         <font>
+            <Font name="Nirmala UI" size="13.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>
