@@ -22,7 +22,7 @@ import javafx.scene.control.ListView;
 public class Inicio_ControllerFX implements Initializable {
 
     @FXML
-    private ListView<Piloto> classificacao;
+    private ListView<String> classificacao;
     @FXML
     private Button cadastro;
     @FXML
@@ -58,12 +58,13 @@ public class Inicio_ControllerFX implements Initializable {
             }
         });
 
-        ObservableList<Piloto> data = FXCollections.observableArrayList();
+        ObservableList<String> data = FXCollections.observableArrayList();
 
         try {
             Iterator itr = facade.getPilotos().iterator();
             while (itr.hasNext()) {
-                Piloto pil = (Piloto) itr.next();
+                Piloto piloto = (Piloto) itr.next();
+                String pil = piloto.toString();
                 data.add(pil);
             }
             classificacao.setItems(data);

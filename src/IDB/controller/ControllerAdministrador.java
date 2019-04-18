@@ -21,7 +21,7 @@ public class ControllerAdministrador {
     public ControllerCorrida getCorrida() {
         return corrida;
     }
-    
+
     /**
      * Método para dar inicio as configurações da corrida.
      */

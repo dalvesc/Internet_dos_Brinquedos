@@ -7,21 +7,22 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 
 public class ConfPartida_ControllerFX implements Initializable {
 
     @FXML
-    private Button cadastro;
-    @FXML
-    private Label titulo;
-    @FXML
     private ListView<?> pilotos;
     @FXML
-    private Label recorde_circuito_corredor;
-    @FXML
-    private Button corrida;
-    @FXML
     private Button iniciar;
+    @FXML
+    private Button iniciar1;
+    @FXML
+    private TextField tempo_qualificacao;
+    @FXML
+    private TextField voltas_qualificacao;
+    @FXML
+    private TextField voltas_corrida;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

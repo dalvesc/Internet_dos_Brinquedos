@@ -37,7 +37,10 @@ public class ControllerCorrida {
         carros.add(carroAux);
     }
 
-    public LinkedList<Piloto> getPilotos() throws SemPilotos{
+    public LinkedList<Piloto> getPilotos() throws SemPilotos {
+        if (pilotos.isEmpty()) {
+            throw new SemPilotos();
+        }
         return pilotos;
     }
 
@@ -78,14 +81,14 @@ public class ControllerCorrida {
      * @param carro
      * @return boolean
      */
-    public boolean escolherEquipe(Piloto piloto, Carro carro) {
+    public boolean escolherEquipe(Piloto piloto, Carro carro) throws CarroSelecionado {
         if (carros.contains(carro)) {
             piloto.setCarro(carro);
             piloto.setEquipe(carro.getEquipe());
             carros.remove(carro);
             return true;
         }
-        return false;
+        throw new CarroSelecionado(carro);
     }
 
     /**
