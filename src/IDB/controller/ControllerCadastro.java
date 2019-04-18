@@ -17,7 +17,7 @@ public class ControllerCadastro {
 
     private LinkedList<Piloto> piloto;
     private LinkedList<Administrador> adm;
-    private Piloto logado;
+    private Piloto logado, pil;
 
     /**
      * Construtor
@@ -174,5 +174,20 @@ public class ControllerCadastro {
             }
         }
         return null;
+    }
+
+    public boolean verificaUsuarioCadastrado(String user) {
+        Iterator itr = piloto.iterator();
+        while (itr.hasNext()) {
+            pil = (Piloto) itr.next();
+            if (pil.getNome().equals(user)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public Piloto getPil(){
+        return pil;
     }
 }

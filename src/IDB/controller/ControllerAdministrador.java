@@ -3,6 +3,7 @@
  */
 package IDB.controller;
 
+import IDB.exception.CorridaCheia;
 import IDB.model.Piloto;
 import java.util.Iterator;
 
@@ -54,8 +55,9 @@ public class ControllerAdministrador {
      *
      * @param piloto
      * @return boolean
+     * @throws IDB.exception.CorridaCheia
      */
-    public boolean escolherPiloto(Piloto piloto) {
+    public boolean escolherPiloto(Piloto piloto) throws CorridaCheia {
         return corrida.pilotoEscolhido(piloto);
     }
 }

@@ -76,18 +76,29 @@ public class ControllerCorrida {
         this.tempoTotalCorrida = tempoTotalCorrida;
     }
 
+    //criar exceção caso a lista já estaja cheia 
     /**
      * Método que recebe o piloto escolhido para jogar na partida atual.
      *
      * @param piloto
      * @return boolean
+     * @throws IDB.exception.CorridaCheia
      */
-    public boolean pilotoEscolhido(Piloto piloto) {
+    public boolean pilotoEscolhido(Piloto piloto) throws CorridaCheia {
         if (pilotos.size() < 4) {
             pilotos.add(piloto);
             return true;
         }
-        return false;
+        throw new CorridaCheia();
+    }
+
+    /**
+     * Método que retorna true caso a quantidade de pilotos já esteja no limite
+     *
+     * @return
+     */
+    public boolean pilotoCheio() {
+        return pilotos.size() < 4;
     }
 
     /**
@@ -108,6 +119,7 @@ public class ControllerCorrida {
      * @param piloto
      * @param carro
      * @return boolean
+     * @throws IDB.exception.CarroSelecionado
      */
     public boolean escolherEquipe(Piloto piloto, Carro carro) throws CarroSelecionado {
         if (carros.contains(carro)) {
