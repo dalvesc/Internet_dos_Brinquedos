@@ -23,8 +23,8 @@ public class ControllerCadastro {
         piloto = new LinkedList();
         adm = new LinkedList();
     }
-    
-    public Piloto getPilotoLogado(){
+
+    public Piloto getPilotoLogado() {
         return logado;
     }
 
@@ -67,7 +67,7 @@ public class ControllerCadastro {
      * @throws IDB.exception.CadastroInvalido
      */
     public Object cadastrarPiloto(String nome, String user, String senha, String urlImagem) throws CadastroInvalido {
-        if (!verificaUsuarioExistente(piloto, user, "piloto")) {
+        if (!verificaUsuarioExistente(piloto, user, "Piloto")) {
             Piloto pitoloAux = new Piloto(nome, user, senha, urlImagem);
             piloto.add(pitoloAux);
             return pitoloAux;
@@ -88,15 +88,17 @@ public class ControllerCadastro {
         Iterator iterator = usuario.iterator();
 
         if (classe.equalsIgnoreCase("Piloto")) {
-            Piloto objetoUsuario = (Piloto) iterator.next();
+            Piloto objetoUsuario;
             while (iterator.hasNext()) {
+                objetoUsuario = (Piloto) iterator.next();
                 if (objetoUsuario.getUsuario().equalsIgnoreCase(user)) {
                     return true;
                 }
             }
         } else {
-            Administrador objetoUsuario = (Administrador) iterator.next();
+            Administrador objetoUsuario;
             while (iterator.hasNext()) {
+                objetoUsuario = (Administrador) iterator.next();
                 if (objetoUsuario.getUsuario().equalsIgnoreCase(user)) {
                     return true;
                 }
@@ -139,7 +141,7 @@ public class ControllerCadastro {
             itr = piloto.iterator();
             while (itr.hasNext()) {
                 pil = (Piloto) itr.next();
-                if (pil.getUsuario() == user && pil.getSenha() == senha) {
+                if (pil.getUsuario().equals(user) && pil.getSenha().equals(senha)) {
                     logado = pil;
                     return pil;
                 }
@@ -148,7 +150,7 @@ public class ControllerCadastro {
             itr = adm.iterator();
             while (itr.hasNext()) {
                 admin = (Administrador) itr.next();
-                if (admin.getUsuario() == user && admin.getSenha() == senha) {
+                if (admin.getUsuario().equals(user) && admin.getSenha().equals(senha)) {
                     return admin;
                 }
             }

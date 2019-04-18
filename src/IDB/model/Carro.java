@@ -11,10 +11,15 @@ package IDB.model;
  */
 public class Carro {
     
-    private String cor;
-    private String numero; 
-    private String equipe;
+    private String cor; //cor do carro.
+    private String numero; //número de identificação do carro(código da TAG).
+    private String equipe; //nome da equipe(nome do carro).
 
+    /**
+     * Construtor.
+     * @param cor
+     * @param equipe 
+     */
     public Carro(String cor, String equipe) {
         this.cor = cor;
         this.equipe = equipe;

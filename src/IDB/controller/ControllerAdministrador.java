@@ -14,6 +14,13 @@ public class ControllerAdministrador {
     private ControllerCadastro pitolosCadastrados;
     private ControllerCorrida corrida;
 
+    /**
+     * Construtor.
+     */
+    public ControllerAdministrador(){
+        
+    }
+    
     public ControllerCadastro getPitolosCadastrados() {
         return pitolosCadastrados;
     }
