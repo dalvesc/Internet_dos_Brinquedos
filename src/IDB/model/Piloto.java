@@ -20,10 +20,11 @@ public class Piloto implements Comparable {
 
     /**
      * Construtor.
+     *
      * @param nome
      * @param usuario
      * @param senha
-     * @param urlImagem 
+     * @param urlImagem
      */
     public Piloto(String nome, String usuario, String senha, String urlImagem) {
         this.nome = nome;
@@ -34,6 +35,7 @@ public class Piloto implements Comparable {
 
     /**
      * Método que adiciona uma nova volta.
+     *
      * @param volta
      */
     public void novaVolta(Volta volta) {
@@ -68,6 +70,7 @@ public class Piloto implements Comparable {
 
     /**
      * Método que retorna o tempo da volta mais rápida do piloto.
+     *
      * @return float
      */
     public float getVoltaRapida() {
@@ -158,6 +161,7 @@ public class Piloto implements Comparable {
 
     /**
      * Método compareTo para o número total de voltas.
+     *
      * @param pilotoAux
      * @return int
      */
@@ -175,6 +179,7 @@ public class Piloto implements Comparable {
 
     /**
      * Método toString com nome, equipe e tempoCorrida.
+     *
      * @return String
      */
     @Override

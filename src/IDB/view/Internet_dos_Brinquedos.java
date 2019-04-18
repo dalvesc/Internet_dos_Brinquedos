@@ -11,6 +11,10 @@ import javafx.stage.Stage;
 import IDB.exception.*;
 import IDB.facade.*;
 
+/**
+ * @author Daniel Costa
+ * @author Adlla Katarine
+ */
 public class Internet_dos_Brinquedos extends Application {
 
     static FacadeBackEnd facade;

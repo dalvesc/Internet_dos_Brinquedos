@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package IDB.model;
 
 /**
@@ -10,15 +5,16 @@ package IDB.model;
  * @author Adlla Katarine
  */
 public class Carro {
-    
+
     private String cor; //cor do carro.
     private String numero; //número de identificação do carro(código da TAG).
     private String equipe; //nome da equipe(nome do carro).
 
     /**
      * Construtor.
+     *
      * @param cor
-     * @param equipe 
+     * @param equipe
      */
     public Carro(String cor, String equipe) {
         this.cor = cor;

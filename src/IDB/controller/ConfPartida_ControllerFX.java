@@ -8,6 +8,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
+/**
+ * @author Daniel Costa
+ * @author Adlla Katarine
+ */
 public class ConfPartida_ControllerFX implements Initializable {
 
     @FXML

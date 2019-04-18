@@ -1,7 +1,7 @@
 package IDB.exception;
 
 /**
- * Exceção lançada caso não esteja acontecendo corrida.
+ * Exceção lançada caso não tenha pilotos na corrida.
  *
  * @author Daniel Costa
  * @author Adlla Katarine

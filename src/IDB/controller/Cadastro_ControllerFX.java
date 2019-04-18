@@ -16,6 +16,10 @@ import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
+/**
+ * @author Daniel Costa
+ * @author Adlla Katarine
+ */
 public class Cadastro_ControllerFX implements Initializable {
 
     @FXML
