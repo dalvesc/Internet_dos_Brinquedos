@@ -3,7 +3,6 @@ package IDB.controller;
 import IDB.exception.*;
 import IDB.facade.*;
 import IDB.view.*;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -46,7 +45,6 @@ public class Cadastro_ControllerFX implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 boolean cadastrou = true;
-
                 if (adm_option.isSelected()) {
                     try {
                         facade.cadastrarADM(nome_piloto.getText(),
@@ -54,11 +52,9 @@ public class Cadastro_ControllerFX implements Initializable {
                     } catch (CadastroInvalido ex) {
                         jaCadastrado.setText("User já cadastrado!");
                         cadastrou = false;
-                    } catch (IOException ex) {
                         Logger.getLogger(Cadastro_ControllerFX.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
-
                 try {
                     facade.cadastrarPiloto(nome_piloto.getText(),
                             usuario_piloto.getText(), senha_piloto.getText(),
@@ -66,12 +62,11 @@ public class Cadastro_ControllerFX implements Initializable {
                 } catch (CadastroInvalido ex) {
                     jaCadastrado.setText("User já cadastrado!");
                     cadastrou = false;
-                } catch (IOException ex) {
                     Logger.getLogger(Cadastro_ControllerFX.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                if (cadastrou) {
-                    tela.telaInicial();
-                    cadastrar.getScene().getWindow().hide();
+                    if (cadastrou) {
+                        tela.telaInicial();
+                        cadastrar.getScene().getWindow().hide();
+                    }
                 }
             }
         });

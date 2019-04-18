@@ -9,6 +9,7 @@ import IDB.controller.*;
 import IDB.exception.*;
 import IDB.model.*;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.LinkedList;
 
 public class FacadeBackEnd {
@@ -16,23 +17,36 @@ public class FacadeBackEnd {
     private ControllerCadastro crlcad;
     private ControllerCorrida crlcor;
 
-    public FacadeBackEnd() throws CadastroInvalido, IOException, LoginInvalido{
+    public FacadeBackEnd() throws CadastroInvalido, IOException, LoginInvalido {
         crlcad = new ControllerCadastro();
+        crlcor = new ControllerCorrida();
     }
 
-    public Object cadastrarADM(String nome, String user, String senha) throws CadastroInvalido, IOException {
+    public Object cadastrarADM(String nome, String user, String senha) throws CadastroInvalido {
         return crlcad.cadastrarADM(nome, user, senha);
     }
 
-    public Object cadastrarPiloto(String nome, String user, String senha, String urlImagem) throws CadastroInvalido, IOException{
+    public Object cadastrarPiloto(String nome, String user, String senha, String urlImagem) throws CadastroInvalido {
         return crlcad.cadastrarPiloto(nome, user, senha, urlImagem);
     }
 
     public Object login(String user, String senha, String classe) throws LoginInvalido {
         return crlcad.login(user, senha, classe);
     }
-    
-    public LinkedList<Piloto> getPilotos() throws SemPilotos{
+
+    public Iterator listarEquipes() {
+        return crlcor.listarEquipes();
+    }
+
+    public LinkedList<Piloto> getPilotos() throws SemPilotos {
         return crlcor.posicaoSessaoCorrida();
+    }
+
+    public boolean escolherEquipe(Piloto piloto, Carro carro) throws CarroSelecionado {
+        return crlcor.escolherEquipe(piloto, carro);
+    }
+
+    public Piloto getPilotoLogado() {
+        return crlcad.getPilotoLogado();
     }
 }

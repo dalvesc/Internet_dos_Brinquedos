@@ -89,4 +89,23 @@ public class PassarTela {
         stage.show();
         stage.setTitle("Configuração da Partida");
     }
+    
+    /**
+     * Passa para a tela de seleção de carro
+     */
+    public void selCarro() {
+        Stage stage = new Stage();
+        Parent root = null;
+
+        try {
+            root = FXMLLoader.load(getClass().getResource("/IDB/view/selCarro.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(Login_ControllerFX.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene scene = new Scene(root);
+
+        stage.setScene(scene);
+        stage.show();
+        stage.setTitle("Selecionar Carro");
+    }
 }
