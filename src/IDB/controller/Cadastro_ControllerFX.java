@@ -63,10 +63,10 @@ public class Cadastro_ControllerFX implements Initializable {
                     jaCadastrado.setText("User já cadastrado!");
                     cadastrou = false;
                     Logger.getLogger(Cadastro_ControllerFX.class.getName()).log(Level.SEVERE, null, ex);
-                    if (cadastrou) {
-                        tela.telaInicial();
-                        cadastrar.getScene().getWindow().hide();
-                    }
+                }
+                if (cadastrou) {
+                    tela.telaInicial();
+                    cadastrar.getScene().getWindow().hide();
                 }
             }
         });

@@ -15,8 +15,12 @@ import java.util.LinkedList;
  */
 public class ControllerCorrida {
 
-    private LinkedList<Piloto> pilotos;
-    private LinkedList<Carro> carros;
+    private LinkedList<Piloto> pilotos; //lista dos pilotos escolhidos para a corrida.
+    private LinkedList<Carro> carros; //lista dos carros disponíveis para a corrida.
+    private float tempoMaxClassif; //tempo máximo que a sessão de classificação pode ter.
+    private int voltasClassif; //quantidade máxima de voltas que um piloto pode fazer na sessão de classificação.
+    private int voltasCorrida; //quantidade máxima de voltas que um piloto pode fazer na sessão de corrida.
+    private float tempoTotalCorrida; //tempo real e final da corrida.
 
     /**
      * Inicia lista de pilotos vazia. Inicia lista de carros com todos o que
@@ -46,6 +50,30 @@ public class ControllerCorrida {
 
     public LinkedList<Carro> getCarros() {
         return carros;
+    }
+
+    public float getTempoMaxClassif() {
+        return tempoMaxClassif;
+    }
+
+    public void setTempoMaxClassif(float tempoMaxClassif) {
+        this.tempoMaxClassif = tempoMaxClassif;
+    }
+
+    public int getVoltasCorrida() {
+        return voltasCorrida;
+    }
+
+    public void setVoltasCorrida(int voltasCorrida) {
+        this.voltasCorrida = voltasCorrida;
+    }
+
+    public float getTempoTotalCorrida() {
+        return tempoTotalCorrida;
+    }
+
+    public void setTempoTotalCorrida(float tempoTotalCorrida) {
+        this.tempoTotalCorrida = tempoTotalCorrida;
     }
 
     /**
@@ -174,7 +202,6 @@ public class ControllerCorrida {
     /**
      * Método auxiliar na ordenação da posição dos pilotos na sessão de
      * qualificação.
-     *
      * @param pilotosAux
      * @param i
      * @param j
@@ -184,4 +211,59 @@ public class ControllerCorrida {
         pilotosAux.set(i, pilotosAux.get(j));
         pilotosAux.set(j, piloto);
     }
+
+    /**
+     * Método para escolha de tempo e voltas máximas da classificação, decididos pelo ADM.
+     * @param tempo
+     * @param voltas 
+     */
+    public void escolherConfClassif(float tempo, int voltas){
+        this.tempoMaxClassif = tempo;
+        this.voltasClassif = voltas;
+    }
+    
+    /**
+     * Método que monitora a sessão de classificação, para que não ultrapasse o seu tempo máximo ou quantidade
+     * máxima de voltas decididos pelo ADM.
+     * @return boolean
+     */
+    public boolean monitorarTerminoClassif(){
+        if(this.tempoTotalCorrida >= this.tempoMaxClassif){
+            return true;
+        }
+        
+        Iterator iterator = pilotos.iterator();
+
+        while (iterator.hasNext()) {
+            Piloto piloto = (Piloto) iterator.next();
+            if(getVoltasCorrida() == piloto.getNumVoltas()){
+                return true;
+            }
+        } return false;
+    }
+    
+    /**
+     * Método para escolha de voltas máximas da corrida, decididos pelo ADM.
+     * @param voltas 
+     */
+    public void escolherConfCorrida(int voltas){
+        this.voltasCorrida = voltas;
+    }
+    
+    /**
+     * Método que monitora a sessão de corrida, para que não ultrapasse a quantidade
+     * máxima de voltas decididos pelo ADM.
+     * @return boolean
+     */
+    public boolean monitorarTerminoCorrida(){
+        Iterator iterator = pilotos.iterator();
+
+        while (iterator.hasNext()) {
+            Piloto piloto = (Piloto) iterator.next();
+            if(getVoltasCorrida() == piloto.getNumVoltas()){
+                return true;
+            }
+        } return false;
+    }
+    
 }

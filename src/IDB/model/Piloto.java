@@ -9,15 +9,22 @@ import java.util.LinkedList;
  */
 public class Piloto implements Comparable {
 
-    private String urlImagem;
-    private final String nome;
-    private Carro carro;
-    private String equipe;
-    private final String usuario;
-    private final String senha;
-    private LinkedList<Volta> voltas;
-    private float tempoCorrida;
+    private String urlImagem; //foto do piloto.
+    private final String nome; //nome do piloto.
+    private Carro carro; //carro que o piloto usará na corrida atual.
+    private String equipe; //nome da equipe atual do piloto.
+    private final String usuario; //nome de usuário do piloto.
+    private final String senha; //senha do piloto.
+    private LinkedList<Volta> voltas; //lista com informações de cada volta completa do piloto na corrida atual.
+    private float tempoCorrida; //tempo total de corrida do piloto na corrida atual.
 
+    /**
+     * Construtor.
+     * @param nome
+     * @param usuario
+     * @param senha
+     * @param urlImagem 
+     */
     public Piloto(String nome, String usuario, String senha, String urlImagem) {
         this.nome = nome;
         this.usuario = usuario;
@@ -27,7 +34,6 @@ public class Piloto implements Comparable {
 
     /**
      * Método que adiciona uma nova volta.
-     *
      * @param volta
      */
     public void novaVolta(Volta volta) {
@@ -62,7 +68,6 @@ public class Piloto implements Comparable {
 
     /**
      * Método que retorna o tempo da volta mais rápida do piloto.
-     *
      * @return float
      */
     public float getVoltaRapida() {
@@ -151,6 +156,11 @@ public class Piloto implements Comparable {
         return tempoCorrida;
     }
 
+    /**
+     * Método compareTo para o número total de voltas.
+     * @param pilotoAux
+     * @return int
+     */
     @Override
     public int compareTo(Object pilotoAux) {
         Piloto piloto = (Piloto) pilotoAux;
@@ -163,6 +173,10 @@ public class Piloto implements Comparable {
         return 0;
     }
 
+    /**
+     * Método toString com nome, equipe e tempoCorrida.
+     * @return String
+     */
     @Override
     public String toString() {
         return nome + "|" + equipe + "|" + tempoCorrida + "|" + getNumVoltas();

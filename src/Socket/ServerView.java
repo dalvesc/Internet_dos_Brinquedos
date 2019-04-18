@@ -29,24 +29,28 @@ public class ServerView {
         Socket cliente = null;
         ObjectOutputStream output;
         ObjectInputStream input;
-        SimSensorDados dadosSensor = new SimSensorDados();
+        SimSensorDados dadosSensor = new SimSensorDados(); //Simulação para receber dados do sensor, como se a TAG estivesse sendo lida constantemente.
         
         try {
-            servidor.criarServidor(5020);
-            cliente = servidor.esperarConexao();
+            
+            servidor.criarServidor(5020); //Servidor é criado e sua porta é especificada.
+            cliente = servidor.esperarConexao(); //Servidor fica esperando uma conexão com um cliente.
             output = servidor.conexaoOutput(cliente);
             input = servidor.conexaoInput(cliente);
+            
             Iterator it = dadosSensor.getLeituraDados().iterator();
             SimulacaoSensor d;
             //Percorre toda a lista
             System.out.println("Enviando todos os dados coletados!");
-            while(it.hasNext()) {
-                d = (SimulacaoSensor)it.next();
-                System.out.println(d.toString());
-                output.writeObject(d);
-                output.flush();
+            while(true){
+                while(it.hasNext()) {
+                    d = (SimulacaoSensor)it.next();
+                    System.out.println(d.toString());
+                    output.writeObject(d); //dados "lidos" sendo enviados para o cliente conectado.
+                    output.flush();
+                }
             }
-            System.out.println("Concluído o envio de dados!");
+            //System.out.println("Concluído o envio de dados!");
             
             /*
             System.out.println("Tratando mensagem...");
@@ -55,8 +59,9 @@ public class ServerView {
             output.writeUTF("HELLO WORLD!");*/  
         } catch (IOException ex) {
             Logger.getLogger(ServerView.class.getName()).log(Level.SEVERE, null, ex);
-        } finally{
+        } finally{ //finalizando conexões.
             servidor.fecharSocket(cliente);
+            servidor.conexaoClose();
         }
     } 
 }

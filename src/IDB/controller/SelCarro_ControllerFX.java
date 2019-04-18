@@ -18,7 +18,7 @@ import javafx.scene.control.Label;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
-public class selCarro_ControllerFX implements Initializable {
+public class SelCarro_ControllerFX implements Initializable {
 
     @FXML
     private Button voltar;
@@ -81,7 +81,7 @@ public class selCarro_ControllerFX implements Initializable {
                 } catch (CarroSelecionado ex) {
                     jaEscolhido.setText("Já selecionado!");
                     selecionou = false;
-                    Logger.getLogger(selCarro_ControllerFX.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(SelCarro_ControllerFX.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 if (selecionou) {
                     tela.telaInicial();
