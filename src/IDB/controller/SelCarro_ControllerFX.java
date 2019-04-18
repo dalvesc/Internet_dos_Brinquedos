@@ -18,6 +18,10 @@ import javafx.scene.control.Label;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
+/**
+ * @author Daniel Costa
+ * @author Adlla Katarine
+ */
 public class SelCarro_ControllerFX implements Initializable {
 
     @FXML

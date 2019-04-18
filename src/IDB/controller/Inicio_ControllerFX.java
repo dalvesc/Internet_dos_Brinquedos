@@ -19,6 +19,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
+/**
+ * @author Daniel Costa
+ * @author Adlla Katarine
+ */
 public class Inicio_ControllerFX implements Initializable {
 
     @FXML

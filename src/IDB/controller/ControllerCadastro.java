@@ -19,19 +19,37 @@ public class ControllerCadastro {
     private LinkedList<Administrador> adm;
     private Piloto logado;
 
+    /**
+     * Construtor
+     */
     public ControllerCadastro() {
         piloto = new LinkedList();
         adm = new LinkedList();
     }
 
+    /**
+     * Método que retorna o piloto que está logado no momento.
+     *
+     * @return
+     */
     public Piloto getPilotoLogado() {
         return logado;
     }
 
+    /**
+     * Método que retorna uma lista com os pilotos cadastrados.
+     *
+     * @return
+     */
     public LinkedList<Piloto> getPiloto() {
         return piloto;
     }
 
+    /**
+     * Método que retorna uma lista com os administradores cadastrados
+     *
+     * @return
+     */
     public LinkedList<Administrador> getAdm() {
         return adm;
     }

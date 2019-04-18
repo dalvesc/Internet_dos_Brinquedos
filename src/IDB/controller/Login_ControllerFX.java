@@ -16,6 +16,10 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+/**
+ * @author Daniel Costa
+ * @author Adlla Katarine
+ */
 public class Login_ControllerFX implements Initializable {
 
     @FXML

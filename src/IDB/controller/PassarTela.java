@@ -10,7 +10,11 @@ import javafx.stage.Stage;
 
 /**
  * Metódos que irão servir para passar de uma tela para outra da interface
- * *Precisa de revisão para saber se será assim mesmo*
+ * *Precisa de revisão para saber se será assim mesmo
+ *
+ *
+ * @author Daniel Costa
+ * @author Adlla Katarine
  */
 public class PassarTela {
 
@@ -89,7 +93,7 @@ public class PassarTela {
         stage.show();
         stage.setTitle("Configuração da Partida");
     }
-    
+
     /**
      * Passa para a tela de seleção de carro
      */

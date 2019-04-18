@@ -202,6 +202,7 @@ public class ControllerCorrida {
     /**
      * Método auxiliar na ordenação da posição dos pilotos na sessão de
      * qualificação.
+     *
      * @param pilotosAux
      * @param i
      * @param j
@@ -213,57 +214,64 @@ public class ControllerCorrida {
     }
 
     /**
-     * Método para escolha de tempo e voltas máximas da classificação, decididos pelo ADM.
+     * Método para escolha de tempo e voltas máximas da classificação, decididos
+     * pelo ADM.
+     *
      * @param tempo
-     * @param voltas 
+     * @param voltas
      */
-    public void escolherConfClassif(float tempo, int voltas){
+    public void escolherConfClassif(float tempo, int voltas) {
         this.tempoMaxClassif = tempo;
         this.voltasClassif = voltas;
     }
-    
+
     /**
-     * Método que monitora a sessão de classificação, para que não ultrapasse o seu tempo máximo ou quantidade
-     * máxima de voltas decididos pelo ADM.
+     * Método que monitora a sessão de classificação, para que não ultrapasse o
+     * seu tempo máximo ou quantidade máxima de voltas decididos pelo ADM.
+     *
      * @return boolean
      */
-    public boolean monitorarTerminoClassif(){
-        if(this.tempoTotalCorrida >= this.tempoMaxClassif){
+    public boolean monitorarTerminoClassif() {
+        if (this.tempoTotalCorrida >= this.tempoMaxClassif) {
             return true;
         }
-        
+
         Iterator iterator = pilotos.iterator();
 
         while (iterator.hasNext()) {
             Piloto piloto = (Piloto) iterator.next();
-            if(getVoltasCorrida() == piloto.getNumVoltas()){
+            if (getVoltasCorrida() == piloto.getNumVoltas()) {
                 return true;
             }
-        } return false;
+        }
+        return false;
     }
-    
+
     /**
      * Método para escolha de voltas máximas da corrida, decididos pelo ADM.
-     * @param voltas 
+     *
+     * @param voltas
      */
-    public void escolherConfCorrida(int voltas){
+    public void escolherConfCorrida(int voltas) {
         this.voltasCorrida = voltas;
     }
-    
+
     /**
-     * Método que monitora a sessão de corrida, para que não ultrapasse a quantidade
-     * máxima de voltas decididos pelo ADM.
+     * Método que monitora a sessão de corrida, para que não ultrapasse a
+     * quantidade máxima de voltas decididos pelo ADM.
+     *
      * @return boolean
      */
-    public boolean monitorarTerminoCorrida(){
+    public boolean monitorarTerminoCorrida() {
         Iterator iterator = pilotos.iterator();
 
         while (iterator.hasNext()) {
             Piloto piloto = (Piloto) iterator.next();
-            if(getVoltasCorrida() == piloto.getNumVoltas()){
+            if (getVoltasCorrida() == piloto.getNumVoltas()) {
                 return true;
             }
-        } return false;
+        }
+        return false;
     }
-    
+
 }

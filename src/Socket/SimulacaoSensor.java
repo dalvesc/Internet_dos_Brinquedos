@@ -6,19 +6,20 @@ import java.io.Serializable;
  * @author Daniel Costa
  * @author Adlla Katarine
  */
-public class SimulacaoSensor implements Serializable{
+public class SimulacaoSensor implements Serializable {
+
     private String ECP;
     private String RSSI;
     private String antennaID;
     private String frequency;
     private String timeStamp;
     private String phase;
-    
-    public SimulacaoSensor(){
-        
+
+    public SimulacaoSensor() {
+
     }
-    
-    public SimulacaoSensor(String ECP, String RSSI, String antennaID, String frequency, String timeStamp, String phase){
+
+    public SimulacaoSensor(String ECP, String RSSI, String antennaID, String frequency, String timeStamp, String phase) {
         this.ECP = ECP;
         this.RSSI = RSSI;
         this.antennaID = antennaID;

@@ -8,11 +8,12 @@ import java.util.List;
  * @author Daniel Costa
  * @author Adlla Katarine
  */
-public class SimSensorDados implements Serializable{
+public class SimSensorDados implements Serializable {
+
     private SimulacaoSensor dados;
     private List leituraDados;
-    
-    public SimSensorDados(){
+
+    public SimSensorDados() {
         leituraDados = new LinkedList();
         dados = new SimulacaoSensor("E22000172211006918905414", "209", "1", "925200", "2019-03-27T10:41:08.153009-0300", "171");
         leituraDados.add(this.dados);
@@ -79,9 +80,4 @@ public class SimSensorDados implements Serializable{
         return "SimSensorDados{" + "dados=" + dados + '}';
     }
 
-    
-
-
-    
-    
 }
