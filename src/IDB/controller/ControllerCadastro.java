@@ -3,8 +3,10 @@
  */
 package IDB.controller;
 
+import IDB.exception.*;
 import IDB.model.Piloto;
 import IDB.model.Administrador;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -13,9 +15,12 @@ import java.util.LinkedList;
  * @author Adlla Katarine
  */
 public class ControllerCadastro {
-    private LinkedList <Piloto> piloto;
-    private LinkedList <Administrador> adm;
+    private LinkedList <Piloto> piloto; //lista de todos os pilotos cadastrados.
+    private LinkedList <Administrador> adm; //lista de todos os adm cadastrados.
     
+    /**
+     * Construtor que inicializa as listas piloto e adm.
+     */
     public ControllerCadastro(){
         piloto = new LinkedList();
         adm = new LinkedList();
@@ -36,8 +41,10 @@ public class ControllerCadastro {
      * @param user
      * @param senha
      * @return boolean
+     * @throws IDB.exception.CadastroInvalido
+     * @throws java.io.IOException
      */
-    public Object cadastrarADM(String nome, String user, String senha){
+    public Object cadastrarADM(String nome, String user, String senha) throws CadastroInvalido, IOException{
         if(!verificaUsuarioExistente(adm, user, "adm")){
             Administrador ADMAux = new Administrador(nome, user, senha);
             adm.add(ADMAux);
@@ -53,8 +60,10 @@ public class ControllerCadastro {
      * @param senha
      * @param urlImagem
      * @return boolean
+     * @throws IDB.exception.CadastroInvalido
+     * @throws java.io.IOException
      */
-    public Object cadastrarPiloto(String nome, String user, String senha, String urlImagem){
+    public Object cadastrarPiloto(String nome, String user, String senha, String urlImagem) throws CadastroInvalido, IOException{
         if(!verificaUsuarioExistente(piloto, user, "piloto")){
             Piloto pitoloAux = new Piloto(nome, user, senha, urlImagem);
             piloto.add(pitoloAux);
@@ -96,8 +105,9 @@ public class ControllerCadastro {
      * @param senha
      * @param classe
      * @return Object
+     * @throws IDB.exception.LoginInvalido
      */
-    public Object login(String user, String senha, String classe){
+    public Object login(String user, String senha, String classe) throws LoginInvalido {
         Object usuario = verificaUsuarioCadastrado(adm, user, senha, classe);
         if(usuario != null){
             return usuario;
