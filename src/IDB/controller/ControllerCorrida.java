@@ -75,8 +75,7 @@ public class ControllerCorrida {
     public void setTempoTotalCorrida(float tempoTotalCorrida) {
         this.tempoTotalCorrida = tempoTotalCorrida;
     }
-
-    //criar exceção caso a lista já estaja cheia 
+ 
     /**
      * Método que recebe o piloto escolhido para jogar na partida atual.
      *
