@@ -1,3 +1,6 @@
+/*
+ * Descrição da classe.
+ */
 package Socket;
 
 import java.io.EOFException;
@@ -8,7 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * @author Daniel Costas
+ * @author Daniel Costa
  * @author Adlla Katarine
  */
 public class ClientView {
@@ -33,6 +36,7 @@ public class ClientView {
             while (true) { //laço para que o input receba todas as mensagens enquanto o servidor estiver enviando.
                 try {
                     dados = input.readObject(); //Método que recebe uma mensagem por vez do servidor.
+
                     System.out.println(dados.toString());
                 } catch (EOFException e) {
                     break;
