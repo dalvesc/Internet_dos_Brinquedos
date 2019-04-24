@@ -186,8 +186,8 @@ public class ControllerCadastro {
         }
         return false;
     }
-    
-    public Piloto getPil(){
+
+    public Piloto getPil() {
         return pil;
     }
 }
