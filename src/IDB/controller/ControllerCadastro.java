@@ -17,7 +17,8 @@ public class ControllerCadastro {
 
     private LinkedList<Piloto> piloto;
     private LinkedList<Administrador> adm;
-    private Piloto logado, pil;
+    private Piloto logadop, pil;
+    private Administrador logadoa;
 
     /**
      * Construtor
@@ -33,7 +34,7 @@ public class ControllerCadastro {
      * @return
      */
     public Piloto getPilotoLogado() {
-        return logado;
+        return logadop;
     }
 
     /**
@@ -155,12 +156,14 @@ public class ControllerCadastro {
         Iterator itr;
         Administrador admin;
         Piloto pil;
+        logadop = null;
+        logadoa = null;
         if (classe.equalsIgnoreCase("Piloto")) {
             itr = piloto.iterator();
             while (itr.hasNext()) {
                 pil = (Piloto) itr.next();
                 if (pil.getUsuario().equals(user) && pil.getSenha().equals(senha)) {
-                    logado = pil;
+                    logadop = pil;
                     return pil;
                 }
             }
@@ -169,6 +172,7 @@ public class ControllerCadastro {
             while (itr.hasNext()) {
                 admin = (Administrador) itr.next();
                 if (admin.getUsuario().equals(user) && admin.getSenha().equals(senha)) {
+                    logadoa = admin;
                     return admin;
                 }
             }
