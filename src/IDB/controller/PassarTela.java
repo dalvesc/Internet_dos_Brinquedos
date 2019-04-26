@@ -46,7 +46,7 @@ public class PassarTela {
         try {
             root = FXMLLoader.load(getClass().getResource("/IDB/view/Cadastro.fxml"));
         } catch (IOException ex) {
-            Logger.getLogger(Login_ControllerFX.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Cadastro_ControllerFX.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         Scene scene = new Scene(root);
@@ -66,7 +66,7 @@ public class PassarTela {
         try {
             root = FXMLLoader.load(getClass().getResource("/IDB/view/Inicio.fxml"));
         } catch (IOException ex) {
-            Logger.getLogger(Login_ControllerFX.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Inicio_ControllerFX.class.getName()).log(Level.SEVERE, null, ex);
         }
         Scene scene = new Scene(root);
 
@@ -85,7 +85,7 @@ public class PassarTela {
         try {
             root = FXMLLoader.load(getClass().getResource("/IDB/view/ConfPartida.fxml"));
         } catch (IOException ex) {
-            Logger.getLogger(Login_ControllerFX.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConfPartida_ControllerFX.class.getName()).log(Level.SEVERE, null, ex);
         }
         Scene scene = new Scene(root);
 
@@ -102,9 +102,9 @@ public class PassarTela {
         Parent root = null;
 
         try {
-            root = FXMLLoader.load(getClass().getResource("/IDB/view/selCarro.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/IDB/view/SelCarro.fxml"));
         } catch (IOException ex) {
-            Logger.getLogger(Login_ControllerFX.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SelCarro_ControllerFX.class.getName()).log(Level.SEVERE, null, ex);
         }
         Scene scene = new Scene(root);
 

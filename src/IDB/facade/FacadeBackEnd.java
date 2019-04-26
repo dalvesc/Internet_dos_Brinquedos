@@ -14,11 +14,14 @@ import java.util.LinkedList;
 public class FacadeBackEnd {
 
     private ControllerCadastro crlcad;
+    private ControllerAdministrador crladm;
     private ControllerCorrida crlcor;
 
     public FacadeBackEnd() throws CadastroInvalido, IOException, LoginInvalido {
         crlcad = new ControllerCadastro();
-        crlcor = new ControllerCorrida();
+        crladm = new ControllerAdministrador();
+        crladm.iniciarConfCorrida();
+        crlcor = crladm.getCorrida();//isso tem que mudar
     }
 
     public Object cadastrarADM(String nome, String user, String senha) throws CadastroInvalido {
@@ -45,12 +48,16 @@ public class FacadeBackEnd {
         return crlcad.getPil();
     }
 
-    public Iterator listarEquipes() {
-        return crlcor.listarEquipes();
+    public LinkedList<Piloto> getPilotos() throws SemPilotos {
+        return crlcad.getPiloto();
     }
 
-    public LinkedList<Piloto> getPilotos() throws SemPilotos {
-        return crlcor.posicaoSessaoCorrida();
+    public LinkedList<Piloto> getPilotosPartida() throws SemPilotos {
+        return crlcor.getPilotos();
+    }
+
+    public Iterator listarEquipes() {
+        return crlcor.listarEquipes();
     }
 
     public boolean escolherEquipe(Piloto piloto, Carro carro) throws CarroSelecionado {

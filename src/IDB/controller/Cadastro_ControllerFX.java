@@ -58,15 +58,16 @@ public class Cadastro_ControllerFX implements Initializable {
                         cadastrou = false;
                         Logger.getLogger(Cadastro_ControllerFX.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                }
-                try {
-                    facade.cadastrarPiloto(nome_piloto.getText(),
-                            usuario_piloto.getText(), senha_piloto.getText(),
-                            foto_piloto.getText());
-                } catch (CadastroInvalido ex) {
-                    jaCadastrado.setText("User já cadastrado!");
-                    cadastrou = false;
-                    Logger.getLogger(Cadastro_ControllerFX.class.getName()).log(Level.SEVERE, null, ex);
+                } else {
+                    try {
+                        facade.cadastrarPiloto(nome_piloto.getText(),
+                                usuario_piloto.getText(), senha_piloto.getText(),
+                                foto_piloto.getText());
+                    } catch (CadastroInvalido ex) {
+                        jaCadastrado.setText("User já cadastrado!");
+                        cadastrou = false;
+                        Logger.getLogger(Cadastro_ControllerFX.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
                 if (cadastrou) {
                     tela.telaInicial();

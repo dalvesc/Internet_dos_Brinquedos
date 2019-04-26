@@ -39,10 +39,10 @@ public class ConfPartida_ControllerFX implements Initializable {
     private TextField voltas_corrida;
     @FXML
     private Button selecionar;
-
-    FacadeBackEnd facade = Internet_dos_Brinquedos.getFacade();
     @FXML
     private Label corrida_cheia;
+
+    FacadeBackEnd facade = Internet_dos_Brinquedos.getFacade();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -51,15 +51,13 @@ public class ConfPartida_ControllerFX implements Initializable {
         ObservableList<String> data = FXCollections.observableArrayList();
 
         try {
-            Iterator itr = facade.getPilotos().iterator();
-            while (itr.hasNext()) {
-                Piloto piloto = (Piloto) itr.next();
+            for (Piloto piloto : facade.getPilotos()) {
                 String pil = piloto.getNome();
                 data.add(pil);
             }
             pilotos.setItems(data);
         } catch (SemPilotos ex) {
-            Logger.getLogger(Inicio_ControllerFX.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConfPartida_ControllerFX.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         selecionar.setOnAction(new EventHandler<ActionEvent>() {
@@ -79,12 +77,19 @@ public class ConfPartida_ControllerFX implements Initializable {
             }
         });
 
-        facade.escolherConfClassif(Float.parseFloat(tempo_qualificacao.getText()),
-                Integer.parseInt(voltas_qualificacao.getText()));
+        if (tempo_qualificacao.getText() == null && voltas_qualificacao.getText() == null) {
+            float tempo = Float.parseFloat(tempo_qualificacao.getText());
+            int voltas = Integer.parseInt(voltas_qualificacao.getText());
+            facade.escolherConfClassif(tempo, voltas);
+        }
 
-        facade.escolherConfCorrida(Integer.parseInt(voltas_corrida.getText()));
-        if (!facade.pilotoCheio() && tempo_qualificacao.getText() != null
-                && voltas_qualificacao.getText() != null && voltas_corrida.getText() != null) {
+        if (voltas_corrida.getText() == null) {
+            int voltas = Integer.parseInt(voltas_corrida.getText());
+            facade.escolherConfCorrida(voltas);
+        }
+
+        if (!facade.pilotoCheio() && tempo_qualificacao.getText() == null
+                && voltas_qualificacao.getText() == null && voltas_corrida.getText() == null) {
 
             iniciar.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
