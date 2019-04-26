@@ -4,8 +4,7 @@
 package IDB.controller;
 
 import IDB.exception.*;
-import IDB.model.Piloto;
-import IDB.model.Administrador;
+import IDB.model.*;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -69,6 +68,7 @@ public class ControllerCadastro {
         if (!verificaUsuarioExistente(adm, user, "adm")) {
             Administrador ADMAux = new Administrador(nome, user, senha);
             adm.add(ADMAux);
+            System.out.println("bbb");
             return ADMAux;
         }
         throw new CadastroInvalido(user);
@@ -89,6 +89,7 @@ public class ControllerCadastro {
         if (!verificaUsuarioExistente(piloto, user, "Piloto")) {
             Piloto pitoloAux = new Piloto(nome, user, senha, urlImagem);
             piloto.add(pitoloAux);
+            System.out.println("aaa");
             return pitoloAux;
         }
         throw new CadastroInvalido(user);
@@ -155,7 +156,6 @@ public class ControllerCadastro {
     public Object verificaUsuarioCadastrado(String user, String senha, String classe) {
         Iterator itr;
         Administrador admin;
-        Piloto pil;
         logadop = null;
         logadoa = null;
         if (classe.equalsIgnoreCase("Piloto")) {

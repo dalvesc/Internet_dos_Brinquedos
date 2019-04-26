@@ -65,9 +65,7 @@ public class Inicio_ControllerFX implements Initializable {
         ObservableList<String> data = FXCollections.observableArrayList();
 
         try {
-            Iterator itr = facade.getPilotos().iterator();
-            while (itr.hasNext()) {
-                Piloto piloto = (Piloto) itr.next();
+            for (Piloto piloto : facade.getPilotosPartida()) {
                 String pil = piloto.toString();
                 data.add(pil);
             }
