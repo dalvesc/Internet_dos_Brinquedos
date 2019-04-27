@@ -16,3 +16,4 @@ Limitações:
 - Como 4 pilotos foram previamentes cadastrados, quando o administrador seleciona um novo corredor nas configurações da partida 
 ele informa que a partida estar cheia.
 - Métodos para inicio de partida ainda não foram completamente desenvolvidos.
+- Método de cadastrar carro implentada, porém ainda não criada interface para configurar isso.
