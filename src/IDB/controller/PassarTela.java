@@ -1,5 +1,6 @@
 package IDB.controller;
 
+import IDB.controllerFx.*;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;

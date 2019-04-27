@@ -1,10 +1,10 @@
-package IDB.controller;
+package IDB.controllerFx;
 
+import IDB.controller.*;
 import IDB.exception.*;
 import IDB.facade.*;
 import IDB.model.*;
 import IDB.view.*;
-import java.util.Iterator;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;

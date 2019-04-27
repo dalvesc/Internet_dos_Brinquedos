@@ -11,7 +11,7 @@ package IDB.model;
 public class Volta {
 
     private int numeroVolta; //número da volta atual na corrida.
-    private final double  tempo; //tempo total da volta completa.
+    private final double tempo; //tempo total da volta completa.
     private int pits; //quantos PITS do piloto durante está volta.
 
     /**

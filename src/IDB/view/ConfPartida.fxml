@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="354.0" prefWidth="524.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IDB.controller.ConfPartida_ControllerFX">
+<AnchorPane id="AnchorPane" prefHeight="354.0" prefWidth="524.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IDB.controllerFx.ConfPartida_ControllerFX">
     <children>
       <Label layoutX="153.0" layoutY="14.0" prefHeight="51.0" prefWidth="217.0" text="Internet dos Brinquedos" textFill="#0046cc">
          <font>

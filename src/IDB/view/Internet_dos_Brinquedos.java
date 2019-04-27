@@ -35,6 +35,7 @@ public class Internet_dos_Brinquedos extends Application {
 
     /**
      * @param args the command line arguments
+     * @throws IDB.exception.CarroSelecionado
      */
     public static void main(String[] args) throws CarroSelecionado {
         try {

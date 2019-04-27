@@ -1,5 +1,6 @@
-package IDB.controller;
+package IDB.controllerFx;
 
+import IDB.controller.*;
 import IDB.exception.*;
 import IDB.facade.*;
 import IDB.view.*;
