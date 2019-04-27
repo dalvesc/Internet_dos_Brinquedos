@@ -1,5 +1,6 @@
 package IDB.model;
 
+import IDB.exception.*;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -16,7 +17,7 @@ public class Piloto implements Comparable {
     private final String usuario; //nome de usuário do piloto.
     private final String senha; //senha do piloto.
     private LinkedList<Volta> voltas; //lista com informações de cada volta completa do piloto na corrida atual.
-    private float tempoCorrida; //tempo total de corrida do piloto na corrida atual.
+    private double tempoCorrida; //tempo total de corrida do piloto na corrida atual.
 
     /**
      * Construtor.
@@ -62,9 +63,13 @@ public class Piloto implements Comparable {
     /**
      * Método que retorna o tempo da ultima volta.
      *
-     * @return float
+     * @return double
+     * @throws IDB.exception.SemCorrida
      */
-    public float getTempoVolta() {
+    public double getTempoVolta() throws SemCorrida {
+        if (voltas.isEmpty()) {
+            throw new SemCorrida();
+        }
         return voltas.getLast().getTempo();
     }
 
@@ -73,7 +78,7 @@ public class Piloto implements Comparable {
      *
      * @return float
      */
-    public float getVoltaRapida() {
+    public double getVoltaRapida() {
         Volta rapida = new Volta(0), aux;
         Iterator itr = voltas.iterator();
         while (itr.hasNext()) {
@@ -111,7 +116,7 @@ public class Piloto implements Comparable {
     /**
      * Método que atualiza o tempo da corrida.
      */
-    public void setTempoCorrida() {
+    public void setTempoCorrida() throws SemCorrida {
         this.tempoCorrida = tempoCorrida + getTempoVolta();
     }
 
@@ -155,7 +160,7 @@ public class Piloto implements Comparable {
         this.voltas = voltas;
     }
 
-    public float getTempoCorrida() {
+    public double getTempoCorrida() {
         return tempoCorrida;
     }
 

@@ -17,7 +17,7 @@ public class FacadeBackEnd {
     private ControllerAdministrador crladm;
     private ControllerCorrida crlcor;
 
-    public FacadeBackEnd() throws CadastroInvalido, IOException, LoginInvalido {
+    public FacadeBackEnd() throws CadastroInvalido, IOException, LoginInvalido, CarroSelecionado {
         crlcad = new ControllerCadastro();
         crladm = new ControllerAdministrador();
         crladm.iniciarConfCorrida();
@@ -78,5 +78,13 @@ public class FacadeBackEnd {
 
     public boolean pilotoCheio() {
         return crlcor.pilotoCheio();
+    }
+
+    public LinkedList posicaoSessaoCorrida() {
+        return crlcor.posicaoSessaoCorrida();
+    }
+
+    public void atzPosicao() {
+        crlcor.atzPosicao();
     }
 }

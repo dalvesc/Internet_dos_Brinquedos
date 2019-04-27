@@ -1,8 +1,9 @@
-/*
+ /*
  * Está classe fará configurações da corrida atual.
  */
 package IDB.controller;
 
+import IDB.exception.CarroSelecionado;
 import IDB.exception.CorridaCheia;
 import IDB.model.Piloto;
 import java.util.Iterator;
@@ -33,8 +34,9 @@ public class ControllerAdministrador {
 
     /**
      * Método para dar inicio as configurações da corrida.
+     * @throws IDB.exception.CarroSelecionado
      */
-    public void iniciarConfCorrida() {
+    public void iniciarConfCorrida() throws CarroSelecionado {
         corrida = new ControllerCorrida();
     }
 

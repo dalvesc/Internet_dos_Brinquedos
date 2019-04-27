@@ -1,6 +1,7 @@
 package IDB.facade;
 
 import IDB.controller.*;
+import IDB.exception.CarroSelecionado;
 
 /**
  * @author Daniel Costa
@@ -11,11 +12,11 @@ public class FacadeTemp {
     private static FacadeTemp facade;
     private final ControllerCorrida controllerCorrida;
 
-    private FacadeTemp() {
+    private FacadeTemp() throws CarroSelecionado {
         controllerCorrida = new ControllerCorrida();
     }
 
-    public static synchronized FacadeTemp getInstance() {
+    public static synchronized FacadeTemp getInstance() throws CarroSelecionado {
         if (facade == null) {
             facade = new FacadeTemp();
         }

@@ -15,48 +15,6 @@ public class SimSensorDados implements Serializable {
 
     public SimSensorDados() {
         leituraDados = new LinkedList();
-        dados = new SimulacaoSensor("E22000172211006918905414", "209", "1", "925200", "2019-03-27T10:41:08.153009-0300", "171");
-        leituraDados.add(this.dados);
-        dados = new SimulacaoSensor("E22000172211006918905414", "209", "1", "925200", "2019-03-27T10:41:08.153009-0300", "171");
-        leituraDados.add(this.dados);
-        dados = new SimulacaoSensor("E22000172211006918905414", "209", "1", "925200", "2019-03-27T10:41:08.153009-0300", "171");
-        leituraDados.add(this.dados);
-        dados = new SimulacaoSensor("E22000172211006918905414", "209", "1", "925200", "2019-03-27T10:41:08.153009-0300", "171");
-        leituraDados.add(this.dados);
-        dados = new SimulacaoSensor("E22000172211006918905414", "209", "1", "925200", "2019-03-27T10:41:08.153009-0300", "171");
-
-        dados = new SimulacaoSensor("E22000172211006918905415", "209", "1", "925200", "2019-03-27T10:41:08.153009-0300", "171");
-        leituraDados.add(this.dados);
-        dados = new SimulacaoSensor("E22000172211006918905415", "209", "1", "925200", "2019-03-27T10:41:08.153009-0300", "171");
-        leituraDados.add(this.dados);
-        dados = new SimulacaoSensor("E22000172211006918905415", "209", "1", "925200", "2019-03-27T10:41:08.153009-0300", "171");
-        leituraDados.add(this.dados);
-        dados = new SimulacaoSensor("E22000172211006918905415", "209", "1", "925200", "2019-03-27T10:41:08.153009-0300", "171");
-        leituraDados.add(this.dados);
-        dados = new SimulacaoSensor("E22000172211006918905415", "209", "1", "925200", "2019-03-27T10:41:08.153009-0300", "171");
-        leituraDados.add(this.dados);
-
-        dados = new SimulacaoSensor("E22000172211006918905416", "209", "1", "925200", "2019-03-27T10:41:08.153009-0300", "171");
-        leituraDados.add(this.dados);
-        dados = new SimulacaoSensor("E22000172211006918905416", "209", "1", "925200", "2019-03-27T10:41:08.153009-0300", "171");
-        leituraDados.add(this.dados);
-        dados = new SimulacaoSensor("E22000172211006918905416", "209", "1", "925200", "2019-03-27T10:41:08.153009-0300", "171");
-        leituraDados.add(this.dados);
-        dados = new SimulacaoSensor("E22000172211006918905416", "209", "1", "925200", "2019-03-27T10:41:08.153009-0300", "171");
-        leituraDados.add(this.dados);
-        dados = new SimulacaoSensor("E22000172211006918905416", "209", "1", "925200", "2019-03-27T10:41:08.153009-0300", "171");
-        leituraDados.add(this.dados);
-
-        dados = new SimulacaoSensor("E22000172211006918905416", "209", "1", "925200", "2019-03-27T10:41:08.153009-0300", "171");
-        leituraDados.add(this.dados);
-        dados = new SimulacaoSensor("E22000172211006918905416", "209", "1", "925200", "2019-03-27T10:41:08.153009-0300", "171");
-        leituraDados.add(this.dados);
-        dados = new SimulacaoSensor("E22000172211006918905416", "209", "1", "925200", "2019-03-27T10:41:08.153009-0300", "171");
-        leituraDados.add(this.dados);
-        dados = new SimulacaoSensor("E22000172211006918905416", "209", "1", "925200", "2019-03-27T10:41:08.153009-0300", "171");
-        leituraDados.add(this.dados);
-        dados = new SimulacaoSensor("E22000172211006918905416", "209", "1", "925200", "2019-03-27T10:41:08.153009-0300", "171");
-        leituraDados.add(this.dados);
     }
 
     public SimulacaoSensor getDados() {
@@ -75,9 +33,25 @@ public class SimSensorDados implements Serializable {
         this.leituraDados = leituraDados;
     }
 
+    public void loopSim() {
+        dados = new SimulacaoSensor("E22000172211006918905414", "209", "2", "925200", "2019-03-27T10:42:08.153009-0300", "171");
+        leituraDados.add(this.dados);
+        dados = new SimulacaoSensor("E22000172211006918905414", "209", "2", "925200", "2019-03-27T10:42:10.153009-0300", "171");
+        leituraDados.add(this.dados);
+        dados = new SimulacaoSensor("E22000172211006918905414", "209", "1", "925200", "2019-03-27T10:42:14.153009-0300", "171");
+        leituraDados.add(this.dados);
+        dados = new SimulacaoSensor("E22000172211006918905414", "209", "1", "925200", "2019-03-27T10:42:16.153009-0300", "171");
+        leituraDados.add(this.dados);
+        dados = new SimulacaoSensor("E22000172211006918905414", "209", "1", "925200", "2019-03-27T10:42:17.153009-0300", "171");
+        leituraDados.add(this.dados);
+        dados = new SimulacaoSensor("E22000172211006918905416", "209", "4", "925200", "2019-03-27T10:42:25.153009-0300", "171");
+        leituraDados.add(this.dados);
+        dados = new SimulacaoSensor("E22000172211006918905414", "209", "3", "925200", "2019-03-27T10:42:40.153009-0300", "171");
+        leituraDados.add(this.dados);
+    }
+
     @Override
     public String toString() {
         return "SimSensorDados{" + "dados=" + dados + '}';
     }
-
 }

@@ -1,13 +1,13 @@
 package IDB.controller;
 
 import IDB.exception.*;
-import IDB.model.Carro;
-import IDB.model.Piloto;
-import IDB.model.Volta;
+import IDB.model.*;
+import Socket.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * @author Daniel Costa
@@ -26,19 +26,39 @@ public class ControllerCorrida {
      * Inicia lista de pilotos vazia. Inicia lista de carros com todos o que
      * estão disponíveis.
      */
-    public ControllerCorrida() {
+    public ControllerCorrida() throws CarroSelecionado {
         pilotos = new LinkedList();
         carros = new LinkedList();
         Carro carroAux;
+        Piloto pilotoAux;
 
         carroAux = new Carro("Azul Escuro", "Mercedes");
         carros.add(carroAux);
+        pilotoAux = new Piloto("Piloto1", "p1", "1", "asd");
+        pilotos.add(pilotoAux);
+        escolherEquipe(pilotoAux, carroAux);
+        setCarro(carroAux, "1");
+
         carroAux = new Carro("Vermelho", "Ferrari");
         carros.add(carroAux);
+        pilotoAux = new Piloto("Piloto2", "p2", "2", "asd");
+        pilotos.add(pilotoAux);
+        escolherEquipe(pilotoAux, carroAux);
+        setCarro(carroAux, "2");
+
         carroAux = new Carro("Azul", "Red Bull");
         carros.add(carroAux);
+        pilotoAux = new Piloto("Piloto3", "p3", "3", "asd");
+        pilotos.add(pilotoAux);
+        escolherEquipe(pilotoAux, carroAux);
+        setCarro(carroAux, "3");
+
         carroAux = new Carro("Preto", "Haas");
         carros.add(carroAux);
+        pilotoAux = new Piloto("Piloto4", "p4", "4", "asd");
+        pilotos.add(pilotoAux);
+        escolherEquipe(pilotoAux, carroAux);
+        setCarro(carroAux, "4");
     }
 
     public LinkedList<Piloto> getPilotos() throws SemPilotos {
@@ -74,6 +94,17 @@ public class ControllerCorrida {
 
     public void setTempoTotalCorrida(float tempoTotalCorrida) {
         this.tempoTotalCorrida = tempoTotalCorrida;
+    }
+
+    /**
+     * Método que recebe o carro que deve ser de determinado id(identificado
+     * pelo RFID).
+     *
+     * @param carro
+     * @param id
+     */
+    public void setCarro(Carro carro, String id) {
+        carro.setNumero(id);
     }
 
     /**
@@ -124,6 +155,7 @@ public class ControllerCorrida {
         if (carros.contains(carro)) {
             piloto.setCarro(carro);
             piloto.setEquipe(carro.getEquipe());
+            piloto.iniciarVoltas();
             carros.remove(carro);
             return true;
         }
@@ -131,19 +163,38 @@ public class ControllerCorrida {
     }
 
     /**
+     * Método que atualiza a posição do piloto a partir da simulação.
+     *
+     */
+    public void atzPosicao() {
+        SimSensorDados sim = new SimSensorDados();
+        sim.loopSim();
+        List posicoes = sim.getLeituraDados();
+        Iterator itr = posicoes.iterator();
+        while (itr.hasNext()) {
+            SimulacaoSensor dados = (SimulacaoSensor) itr.next();
+            for (Piloto piloto : pilotos) {
+                if (piloto.getCarro().getNumero().equals(dados.getAntennaID())) {
+                    String replaceAll = dados.getTimeStamp().substring(dados.getTimeStamp().indexOf("T") + 1,
+                            dados.getTimeStamp().indexOf("."));
+                    replaceAll = replaceAll.replaceAll(":", "");
+                    Volta volta = new Volta(Double.parseDouble(replaceAll));
+                    addVolta(piloto.getCarro().getNumero(), volta);
+                }
+            }
+        }
+    }
+
+    /**
      * Método que adiciona mais uma volta do piloto na corrida e o tempo dessa
      * volta.
      *
      * @param codCarro
-     * @param tempoVolta
+     * @param volta
      */
-    public void addVolta(String codCarro, float tempoVolta) {
-        Iterator iterator = pilotos.iterator();
-
-        while (iterator.hasNext()) {
-            Piloto piloto = (Piloto) iterator.next();
+    public void addVolta(String codCarro, Volta volta) {
+        for (Piloto piloto : pilotos) {
             if (piloto.getCarro().getNumero().compareTo(codCarro) == 0) {
-                Volta volta = new Volta(tempoVolta);
                 piloto.novaVolta(volta);
             }
         }
@@ -156,10 +207,7 @@ public class ControllerCorrida {
      * @param codCarro
      */
     public void addPits(String codCarro) {
-        Iterator iterator = pilotos.iterator();
-
-        while (iterator.hasNext()) {
-            Piloto piloto = (Piloto) iterator.next();
+        for (Piloto piloto : pilotos) {
             if (piloto.getCarro().getNumero().compareTo(codCarro) == 0) {
                 piloto.setPits();
             }
@@ -172,7 +220,7 @@ public class ControllerCorrida {
      * @param piloto
      * @return float
      */
-    public float retornarVoltaMaisRapida(Piloto piloto) {
+    public double retornarVoltaMaisRapida(Piloto piloto) {
         return piloto.getVoltaRapida();
     }
 
@@ -247,10 +295,7 @@ public class ControllerCorrida {
             return true;
         }
 
-        Iterator iterator = pilotos.iterator();
-
-        while (iterator.hasNext()) {
-            Piloto piloto = (Piloto) iterator.next();
+        for (Piloto piloto : pilotos) {
             if (getVoltasCorrida() == piloto.getNumVoltas()) {
                 return true;
             }
@@ -274,15 +319,11 @@ public class ControllerCorrida {
      * @return boolean
      */
     public boolean monitorarTerminoCorrida() {
-        Iterator iterator = pilotos.iterator();
-
-        while (iterator.hasNext()) {
-            Piloto piloto = (Piloto) iterator.next();
+        for (Piloto piloto : pilotos) {
             if (getVoltasCorrida() == piloto.getNumVoltas()) {
                 return true;
             }
         }
         return false;
     }
-
 }

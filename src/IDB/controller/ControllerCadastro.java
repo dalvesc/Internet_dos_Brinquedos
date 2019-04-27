@@ -25,6 +25,15 @@ public class ControllerCadastro {
     public ControllerCadastro() {
         piloto = new LinkedList();
         adm = new LinkedList();
+        Piloto pilotoAux;
+        pilotoAux = new Piloto("Piloto1", "p1", "1", "asd");
+        piloto.add(pilotoAux);
+        pilotoAux = new Piloto("Piloto2", "p2", "2", "asd");
+        piloto.add(pilotoAux);
+        pilotoAux = new Piloto("Piloto3", "p3", "3", "asd");
+        piloto.add(pilotoAux);
+        pilotoAux = new Piloto("Piloto4", "p4", "4", "asd");
+        piloto.add(pilotoAux);
     }
 
     /**
