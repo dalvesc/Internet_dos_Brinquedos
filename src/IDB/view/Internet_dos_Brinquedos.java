@@ -36,7 +36,7 @@ public class Internet_dos_Brinquedos extends Application {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CarroSelecionado {
         try {
             facade = new FacadeBackEnd();
         } catch (IOException ex) {

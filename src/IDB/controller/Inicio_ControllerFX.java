@@ -5,7 +5,6 @@ import IDB.facade.*;
 import IDB.model.*;
 import IDB.view.*;
 import java.net.URL;
-import java.util.Iterator;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -39,12 +38,34 @@ public class Inicio_ControllerFX implements Initializable {
     private Button login;
     @FXML
     private Label label_tipo_corrida;
+    @FXML
+    private Button testar;
 
     FacadeBackEnd facade = Internet_dos_Brinquedos.getFacade();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         PassarTela tela = new PassarTela();
+        ObservableList<String> data = FXCollections.observableArrayList();
+
+        testar.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    data.clear();
+                    facade.atzPosicao();
+                    label_tipo_corrida.setText("Corrida");
+                    for (Piloto piloto : facade.getPilotosPartida()) {
+                        String pil = piloto.getNome() + "|" + piloto.getEquipe() + "|"
+                                + piloto.getTempoVolta() + "|" + piloto.getNumVoltas();
+                        data.add(pil);
+                    }
+                    classificacao.setItems(data);
+                } catch (SemPilotos | SemCorrida ex) {
+                    Logger.getLogger(Inicio_ControllerFX.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
 
         cadastro.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -62,15 +83,14 @@ public class Inicio_ControllerFX implements Initializable {
             }
         });
 
-        ObservableList<String> data = FXCollections.observableArrayList();
-
         try {
             for (Piloto piloto : facade.getPilotosPartida()) {
-                String pil = piloto.toString();
+                String pil = piloto.getNome() + "|" + piloto.getEquipe() + "|"
+                        + piloto.getTempoVolta() + "|" + piloto.getNumVoltas();
                 data.add(pil);
             }
             classificacao.setItems(data);
-        } catch (SemPilotos ex) {
+        } catch (SemPilotos | SemCorrida ex) {
             Logger.getLogger(Inicio_ControllerFX.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

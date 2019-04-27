@@ -11,7 +11,7 @@ package IDB.model;
 public class Volta {
 
     private int numeroVolta; //número da volta atual na corrida.
-    private final float tempo; //tempo total da volta completa.
+    private final double  tempo; //tempo total da volta completa.
     private int pits; //quantos PITS do piloto durante está volta.
 
     /**
@@ -19,7 +19,7 @@ public class Volta {
      *
      * @param tempo
      */
-    public Volta(float tempo) {
+    public Volta(double tempo) {
         this.tempo = tempo;
         this.pits = 0;
     }
@@ -47,7 +47,7 @@ public class Volta {
      *
      * @return int com o tempo da volta
      */
-    public float getTempo() {
+    public double getTempo() {
         return tempo;
     }
 
