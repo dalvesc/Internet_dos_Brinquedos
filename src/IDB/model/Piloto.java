@@ -76,7 +76,7 @@ public class Piloto implements Comparable {
     /**
      * Método que retorna o tempo da volta mais rápida do piloto.
      *
-     * @return float
+     * @return double
      */
     public double getVoltaRapida() {
         Volta rapida = new Volta(0), aux;
