@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="337.0" prefWidth="524.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IDB.controllerFx.Inicio_ControllerFX">
+    <children>
+      <Label layoutX="153.0" layoutY="14.0" prefHeight="51.0" prefWidth="217.0" text="Internet dos Brinquedos" textFill="#0046cc">
+         <font>
+            <Font name="Nirmala UI" size="20.0" />
+         </font>
+      </Label>
+      <ListView fx:id="classificacao" layoutX="39.0" layoutY="157.0" prefHeight="120.0" prefWidth="445.0" />
+      <Button fx:id="cadastro" layoutX="39.0" layoutY="285.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="144.0" text="Cadastro">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Label fx:id="label_tipo_corrida" layoutX="14.0" layoutY="69.0" prefHeight="25.0" prefWidth="170.0">
+         <font>
+            <Font name="Nirmala UI" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="tempo_de_qualidicacao" layoutX="184.0" layoutY="69.0" prefHeight="25.0" prefWidth="84.0">
+         <font>
+            <Font name="Nirmala UI" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="274.0" layoutY="69.0" prefHeight="25.0" prefWidth="144.0" text="RECORDE DO CIRCUITO:">
+         <font>
+            <Font name="Nirmala UI" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="recorde_circuito" layoutX="426.0" layoutY="69.0" prefHeight="25.0" prefWidth="84.0">
+         <font>
+            <Font name="Nirmala UI" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="recorde_circuito_corredor" layoutX="262.0" layoutY="94.0" prefHeight="25.0" prefWidth="244.0">
+         <font>
+            <Font name="Nirmala UI" size="13.0" />
+         </font>
+      </Label>
+      <Button fx:id="login" layoutX="346.0" layoutY="285.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="144.0" text="Login">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Label layoutX="113.0" layoutY="119.0" prefHeight="25.0" prefWidth="297.0" text="POS | PILOTO | TIME |  TEMPO DE VOLTA | VOLTAS">
+         <font>
+            <Font name="Nirmala UI" size="13.0" />
+         </font>
+      </Label>
+      <Button fx:id="testar" layoutX="440.0" layoutY="14.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="56.0" text="Testar">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+    </children>
+</AnchorPane>
