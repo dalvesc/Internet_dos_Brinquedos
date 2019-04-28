@@ -189,6 +189,12 @@ public class ControllerCadastro {
         return null;
     }
 
+    /**
+     * Método que verifica se um usuário já possui cadastro no sistema.
+     *
+     * @param user
+     * @return booelean
+     */
     public boolean verificaUsuarioCadastrado(String user) {
         Iterator itr = piloto.iterator();
         while (itr.hasNext()) {
