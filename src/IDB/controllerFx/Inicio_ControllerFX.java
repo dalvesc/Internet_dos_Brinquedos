@@ -32,9 +32,9 @@ public class Inicio_ControllerFX implements Initializable {
     @FXML
     private Label tempo_de_qualidicacao;
     @FXML
-    private Label recorde_circuito;
+    private Label recorde_circuito; //tempo
     @FXML
-    private Label recorde_circuito_corredor;
+    private Label recorde_circuito_corredor; //nome(equipe)
     @FXML
     private Button login;
     @FXML
@@ -47,11 +47,13 @@ public class Inicio_ControllerFX implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         PassarTela tela = new PassarTela();
+
         ObservableList<String> data = FXCollections.observableArrayList();
 
         testar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                Piloto rapido = null;
                 try {
                     data.clear();
                     facade.atzPosicao();
@@ -65,6 +67,17 @@ public class Inicio_ControllerFX implements Initializable {
                 } catch (SemPilotos | SemCorrida ex) {
                     Logger.getLogger(Inicio_ControllerFX.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                try {
+                    rapido = facade.posicaoSessaoRecorde(facade.getPilotos());
+                } catch (SemPilotos | SemCorrida ex) {
+                    Logger.getLogger(Inicio_ControllerFX.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    recorde_circuito.setText(Double.toString(facade.retornarVoltaMaisRapida(rapido)));
+                } catch (SemCorrida ex) {
+                    Logger.getLogger(Inicio_ControllerFX.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                recorde_circuito_corredor.setText(rapido.getNome() + " | " + rapido.getEquipe());
             }
         });
 

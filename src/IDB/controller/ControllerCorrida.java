@@ -218,14 +218,14 @@ public class ControllerCorrida {
             }
         }
     }
- 
+
     /**
      * Método que retorna o tempo da volta mais rápida do piloto desejado.
      *
      * @param piloto
-     * @return float
+     * @return doubles
      */
-    public double retornarVoltaMaisRapida(Piloto piloto) {
+    public double retornarVoltaMaisRapida(Piloto piloto) throws SemCorrida{
         return piloto.getVoltaRapida();
     }
 
@@ -244,7 +244,7 @@ public class ControllerCorrida {
      *
      * @return LinkedList
      */
-    public LinkedList posicaoSessaoQualif() {
+    public LinkedList posicaoSessaoQualif() throws SemCorrida{
         ArrayList pilotosAux = new ArrayList(pilotos.size());
 
         for (int i = pilotosAux.size() - 1; i > 0; i--) {
@@ -261,6 +261,31 @@ public class ControllerCorrida {
             pilotos.add((Piloto) pilotosAux.get(k));
         }
         return pilotos;
+    }
+
+    /**
+     * Método que atualiza a posição de todos os pilotos cadastrados, retornando
+     * o piloto em primeiro lugar de tempo mais rápido.
+     *
+     * @return Piloto
+     */
+    public Piloto posicaoSessaoRecorde(LinkedList contCadastro) throws SemCorrida {
+        ArrayList pilotosAux = new ArrayList(contCadastro.size());
+
+        for (int i = pilotosAux.size() - 1; i > 0; i--) {
+
+            for (int j = 0; j < i; j++) {
+                Piloto piloto1 = (Piloto) pilotosAux.get(j + 1);
+                Piloto piloto2 = (Piloto) pilotosAux.get(j);
+                if (piloto1.getVoltaRapida() < piloto2.getVoltaRapida()) {
+                    swap(pilotosAux, j, j + 1);
+                }
+            }
+        }
+        for (int k = pilotosAux.size() - 1; k >= 0; k--) {
+            contCadastro.add((Piloto) pilotosAux.get(k));
+        }
+        return (Piloto) contCadastro.getFirst();
     }
 
     /**
