@@ -166,7 +166,7 @@ public class ControllerCorrida {
      * Método que atualiza a posição do piloto a partir da simulação.
      *
      */
-    public void atzPosicao() {
+    public void atzPosicao() throws SemCorrida {
         SimSensorDados sim = new SimSensorDados();
         sim.loopSim();
         List posicoes = sim.getLeituraDados();
@@ -179,7 +179,12 @@ public class ControllerCorrida {
                             dados.getTimeStamp().indexOf("."));
                     replaceAll = replaceAll.replaceAll(":", "");
                     Volta volta = new Volta(Double.parseDouble(replaceAll));
-                    addVolta(piloto.getCarro().getNumero(), volta);
+                    if (piloto.getNumVoltas() == 0) {
+                        addVolta(piloto.getCarro().getNumero(), volta);
+                    }
+                    if (volta.getTempo() - piloto.getTempoVolta() >= 5) {
+                        addVolta(piloto.getCarro().getNumero(), volta);
+                    }
                 }
             }
         }
@@ -213,7 +218,7 @@ public class ControllerCorrida {
             }
         }
     }
-
+ 
     /**
      * Método que retorna o tempo da volta mais rápida do piloto desejado.
      *
