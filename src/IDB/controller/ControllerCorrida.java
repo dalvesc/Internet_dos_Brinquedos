@@ -125,7 +125,7 @@ public class ControllerCorrida {
     /**
      * Método que retorna true caso a quantidade de pilotos já esteja no limite
      *
-     * @return boolean
+     * @return
      */
     public boolean pilotoCheio() {
         return pilotos.size() < 4;
@@ -166,7 +166,7 @@ public class ControllerCorrida {
      * Método que atualiza a posição do piloto a partir da simulação.
      *
      */
-    public void atzPosicao() {
+    public void atzPosicao() throws SemCorrida {
         SimSensorDados sim = new SimSensorDados();
         sim.loopSim();
         List posicoes = sim.getLeituraDados();
@@ -179,7 +179,12 @@ public class ControllerCorrida {
                             dados.getTimeStamp().indexOf("."));
                     replaceAll = replaceAll.replaceAll(":", "");
                     Volta volta = new Volta(Double.parseDouble(replaceAll));
-                    addVolta(piloto.getCarro().getNumero(), volta);
+                    if (piloto.getNumVoltas() == 0) {
+                        addVolta(piloto.getCarro().getNumero(), volta);
+                    }
+                    if (volta.getTempo() - piloto.getTempoVolta() >= 5) {
+                        addVolta(piloto.getCarro().getNumero(), volta);
+                    }
                 }
             }
         }
@@ -218,9 +223,9 @@ public class ControllerCorrida {
      * Método que retorna o tempo da volta mais rápida do piloto desejado.
      *
      * @param piloto
-     * @return float
+     * @return doubles
      */
-    public double retornarVoltaMaisRapida(Piloto piloto) {
+    public double retornarVoltaMaisRapida(Piloto piloto) throws SemCorrida{
         return piloto.getVoltaRapida();
     }
 
@@ -239,7 +244,7 @@ public class ControllerCorrida {
      *
      * @return LinkedList
      */
-    public LinkedList posicaoSessaoQualif() {
+    public LinkedList posicaoSessaoQualif() throws SemCorrida{
         ArrayList pilotosAux = new ArrayList(pilotos.size());
 
         for (int i = pilotosAux.size() - 1; i > 0; i--) {
@@ -256,6 +261,31 @@ public class ControllerCorrida {
             pilotos.add((Piloto) pilotosAux.get(k));
         }
         return pilotos;
+    }
+
+    /**
+     * Método que atualiza a posição de todos os pilotos cadastrados, retornando
+     * o piloto em primeiro lugar de tempo mais rápido.
+     *
+     * @return Piloto
+     */
+    public Piloto posicaoSessaoRecorde(LinkedList contCadastro) throws SemCorrida {
+        ArrayList pilotosAux = new ArrayList(contCadastro.size());
+
+        for (int i = pilotosAux.size() - 1; i > 0; i--) {
+
+            for (int j = 0; j < i; j++) {
+                Piloto piloto1 = (Piloto) pilotosAux.get(j + 1);
+                Piloto piloto2 = (Piloto) pilotosAux.get(j);
+                if (piloto1.getVoltaRapida() < piloto2.getVoltaRapida()) {
+                    swap(pilotosAux, j, j + 1);
+                }
+            }
+        }
+        for (int k = pilotosAux.size() - 1; k >= 0; k--) {
+            contCadastro.add((Piloto) pilotosAux.get(k));
+        }
+        return (Piloto) contCadastro.getFirst();
     }
 
     /**
@@ -326,5 +356,4 @@ public class ControllerCorrida {
         }
         return false;
     }
-    
 }

@@ -1,38 +1,42 @@
 /*
- * Está classe dará início ao cadastro/login do ADM ou Piloto.
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
-package IDB.controller;
+package SocketServer;
 
-import IDB.exception.*;
-import IDB.model.*;
+import IDB.exception.CadastroInvalido;
+import IDB.exception.LoginInvalido;
+import IDB.model.Administrador;
+import IDB.model.Piloto;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 /**
- * @author Daniel Costa
+ *
  * @author Adlla Katarine
  */
-public class ControllerCadastro {
-
-    private LinkedList<Piloto> piloto;
-    private LinkedList<Administrador> adm;
-    private Piloto logadop, pil;
-    private Administrador logadoa;
+public class Controller_Cadastro {
+    
+    private LinkedList<Model_Piloto> piloto;
+    private LinkedList<Model_Administrador> adm;
+    private Model_Piloto logadop, pil;
+    private Model_Administrador logadoa;
 
     /**
      * Construtor
      */
-    public ControllerCadastro() {
+    public Controller_Cadastro() {
         piloto = new LinkedList();
         adm = new LinkedList();
-        Piloto pilotoAux;
-        pilotoAux = new Piloto("Piloto1", "p1", "1", "asd");
+        Model_Piloto pilotoAux;
+        pilotoAux = new Model_Piloto("Piloto1", "p1", "1", "asd");
         piloto.add(pilotoAux);
-        pilotoAux = new Piloto("Piloto2", "p2", "2", "asd");
+        pilotoAux = new Model_Piloto("Piloto2", "p2", "2", "asd");
         piloto.add(pilotoAux);
-        pilotoAux = new Piloto("Piloto3", "p3", "3", "asd");
+        pilotoAux = new Model_Piloto("Piloto3", "p3", "3", "asd");
         piloto.add(pilotoAux);
-        pilotoAux = new Piloto("Piloto4", "p4", "4", "asd");
+        pilotoAux = new Model_Piloto("Piloto4", "p4", "4", "asd");
         piloto.add(pilotoAux);
     }
 
@@ -41,7 +45,7 @@ public class ControllerCadastro {
      *
      * @return
      */
-    public Piloto getPilotoLogado() {
+    public Model_Piloto getPilotoLogado() {
         return logadop;
     }
 
@@ -50,7 +54,7 @@ public class ControllerCadastro {
      *
      * @return
      */
-    public LinkedList<Piloto> getPiloto() {
+    public LinkedList<Model_Piloto> getPiloto() {
         return piloto;
     }
 
@@ -59,7 +63,7 @@ public class ControllerCadastro {
      *
      * @return
      */
-    public LinkedList<Administrador> getAdm() {
+    public LinkedList<Model_Piloto> getAdm() {
         return adm;
     }
 
@@ -75,7 +79,7 @@ public class ControllerCadastro {
      */
     public Object cadastrarADM(String nome, String user, String senha) throws CadastroInvalido {
         if (!verificaUsuarioExistente(adm, user, "adm")) {
-            Administrador ADMAux = new Administrador(nome, user, senha);
+            Model_Administrador ADMAux = new Model_Administrador(nome, user, senha);
             adm.add(ADMAux);
             System.out.println("bbb");
             return ADMAux;
@@ -96,7 +100,7 @@ public class ControllerCadastro {
      */
     public Object cadastrarPiloto(String nome, String user, String senha, String urlImagem) throws CadastroInvalido {
         if (!verificaUsuarioExistente(piloto, user, "Piloto")) {
-            Piloto pitoloAux = new Piloto(nome, user, senha, urlImagem);
+            Model_Piloto pitoloAux = new Model_Piloto(nome, user, senha, urlImagem);
             piloto.add(pitoloAux);
             System.out.println("aaa");
             return pitoloAux;
@@ -164,13 +168,13 @@ public class ControllerCadastro {
      */
     public Object verificaUsuarioCadastrado(String user, String senha, String classe) {
         Iterator itr;
-        Administrador admin;
+        Model_Administrador admin;
         logadop = null;
         logadoa = null;
         if (classe.equalsIgnoreCase("Piloto")) {
             itr = piloto.iterator();
             while (itr.hasNext()) {
-                pil = (Piloto) itr.next();
+                pil = (Model_Piloto) itr.next();
                 if (pil.getUsuario().equals(user) && pil.getSenha().equals(senha)) {
                     logadop = pil;
                     return pil;
@@ -179,7 +183,7 @@ public class ControllerCadastro {
         } else {
             itr = adm.iterator();
             while (itr.hasNext()) {
-                admin = (Administrador) itr.next();
+                admin = (Model_Administrador) itr.next();
                 if (admin.getUsuario().equals(user) && admin.getSenha().equals(senha)) {
                     logadoa = admin;
                     return admin;

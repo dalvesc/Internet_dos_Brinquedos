@@ -84,7 +84,15 @@ public class FacadeBackEnd {
         return crlcor.posicaoSessaoCorrida();
     }
 
-    public void atzPosicao() {
+    public void atzPosicao() throws SemCorrida {
         crlcor.atzPosicao();
+    }
+
+    public Piloto posicaoSessaoRecorde(LinkedList contCadastro) throws SemCorrida {
+        return crlcor.posicaoSessaoRecorde(contCadastro);
+    }
+
+    public double retornarVoltaMaisRapida(Piloto piloto) throws SemCorrida {
+        return crlcor.retornarVoltaMaisRapida(piloto);
     }
 }

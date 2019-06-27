@@ -32,6 +32,7 @@ public class Piloto implements Comparable {
         this.usuario = usuario;
         this.senha = senha;
         this.urlImagem = urlImagem;
+        voltas = new LinkedList();
     }
 
     /**
@@ -76,9 +77,13 @@ public class Piloto implements Comparable {
     /**
      * Método que retorna o tempo da volta mais rápida do piloto.
      *
-     * @return float
+     * @return double
+     * @throws IDB.exception.SemCorrida
      */
-    public double getVoltaRapida() {
+    public double getVoltaRapida() throws SemCorrida {
+        if (voltas.isEmpty()) {
+            throw new SemCorrida();
+        }
         Volta rapida = new Volta(0), aux;
         Iterator itr = voltas.iterator();
         while (itr.hasNext()) {
